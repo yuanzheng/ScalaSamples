@@ -2,11 +2,73 @@ package learning.map
 
 import scala.collection.mutable.{Map=>MMap}
 import util.control.Breaks._
+import java.util.Date
 
 class MapLearning {
   /** All features of the ClassifiedObject, including both classified and unclassified features */
   //final def getObjectFeatures: scala.collection.immutable.Map[String, Any] = scala.collection.immutable.Map((this.classifiedFeatures ++ this.unclassifiedFeatures).toSeq:_*)
 
+  def mapContain() {
+    var prospectId: Long = 0
+    var m2: Map[String, Any] = Map("company"->"insidesales.com", "size"->1000.toLong)
+    m2.get("xize") match {
+      case Some(x: Long) => prospectId = x
+      case _ => println(s"It doesn't contain Long: ${m2.get("xize")}")
+    }
+    
+    println(s"It contains: $prospectId")
+    println(s"It Casts to long: ${m2.get("size").get.toString.toLong}")
+    
+    
+  }
+  
+  def addNewElementToImmutableMap() {
+     var m2: Map[String, Any] = Map("company"->"insidesales.com", "size:12"->1000)
+     
+     val people = Map("name"->"Lucas Song")
+     m2 = m2 + ("People" -> people)
+     
+     println(s"Add an Element: $m2")
+  }
+  def removeFromMap() {
+    var m2: Map[String, Any] = Map("company"->"insidesales.com", "size:12"->1000)
+    val key = "size" + ":" + "12"
+    m2 = Map() ++ m2-key
+    
+    println(s"remove element from a map: $m2")
+  }
+  
+  
+  def newBuilder() {
+    val result = Map.newBuilder[String, Any]
+    
+    result.+=("name"->"Hello world")
+    println(s"new Builder 1: ${result.result()}")
+    
+    result.+=("age"->123345)
+    println(s"new Builder 2: ${result.result()}")
+    
+    val tmpMap: Map[String, Any] = Map()
+    result.+=("year" -> tmpMap.get("year").getOrElse(""))
+    val check: Map[String, Any] = result.result()
+    println(s" -- this is the origin: $check")
+    check.foreach {
+      f => if (f._2 != "") {
+        println(s" --- ${f._1} is ${f._2}")
+      }
+    }
+    
+  }
+  
+  
+  def addNewElementToMap() {
+    var m2: Map[String, Any] = Map("company"->"insidesales.com", "size"->1000.toLong)
+    
+    m2 += "Age"->2000
+    
+    println(s"With new element: $m2")
+
+  }
   
   def appendTwoMaps(): Unit = {
     val m1: MMap[String, Any] = MMap("name"->"song", "age"->200)
@@ -15,19 +77,52 @@ class MapLearning {
     val newMap: Map[String, Any] = Map((m1++m2).toSeq:_*)
     println(s"new Map: $newMap")
     
-    val allString: Map[String, String] = newMap map {x=>(x._1, x._2.toString())}
-    println(s"new Map to String: $allString")
+    val whattype: Any = m2.get("size").getOrElse("")
+    println(s"check get None ${whattype.getClass()}")
     
     
   }
   
-  def convertMapType() {
-    val oldMap: Map[String, Any] = Map(
+  def convertMapValueType() {
+    val oldMap1: Map[String, Any] = Map(
         "name"->"Lucas",
-        "ago"->200)
-        
-    val newMap: Map[String, String] = Map() ++ oldMap.toSeq.map(x=>(x._1, x._2.toString()))
+        "age"->200)
+// convert 1 
+    val newMap: Map[String, String] = Map() ++ oldMap1.toSeq.map(x=>(x._1, x._2.toString()))
     println(s"check map Type: $newMap")
+    
+    val oldMap2: Map[String, Any] = Map(
+        "name"->"song",
+        "age"->120)
+//convert 2
+    val allString: Map[String, String] = oldMap2 map {x=>(x._1, x._2.toString())}
+    println(s"allString to String: $allString")
+    
+    val now = System.currentTimeMillis();
+    val date = new Date(now)
+    val oldMap3: Map[String, Any] = Map(
+        "name"->"song",
+        "age"->120,
+        "birth"->date)
+//convert 3 -- not true!
+    val mapString: Map[String, String] = oldMap3.asInstanceOf[scala.collection.immutable.Map[String,String]]
+    if(mapString.get("age").get == classOf[String]){
+      println(s"age is Int")
+    } else {
+      println(s"age is ${mapString.get("age").get.getClass}")
+    }
+    if(mapString.get("birth").get == classOf[Date]) {
+      println(s"birth is Date")
+    } else {
+      println(s"birth is ${mapString.get("birth").get.getClass}")
+    }
+    println(s"new Map to String: $mapString")
+    
+    
+    // TODO
+    /** converting map[string, string] to map[string, any] */
+    //val data = x.mapValues(_.asInstanceOf[Any]).toMap
+    
     
   }
   /** Pattern matching can also be used for Option values. 

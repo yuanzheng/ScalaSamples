@@ -1,6 +1,9 @@
 package learning
 
 import map.MapLearning
+import list.ListLearning
+import json.JsonLearning
+import timezone.TimeZone
 
 object LetStartit {
   
@@ -11,9 +14,28 @@ object LetStartit {
     
     val up = new Functions
     val map: MapLearning = new MapLearning
+    map.addNewElementToImmutableMap
+    map.removeFromMap()
+    map.newBuilder()
     map.appendTwoMaps()
     map.buildNewMap()
-    map.convertMapType()
+    map.convertMapValueType()
+    map.mapContain()
+    map.addNewElementToMap
+    
+    
+    val time: TimeZone = new TimeZone
+    time.UDate()
+    time.jodaToJavaDate()
+    time.jodaTimeComparision
+    time.stringToJodaTime
+    
+    val list: ListLearning = new ListLearning
+    list.mapList
+    val json: JsonLearning = new JsonLearning
+    json.mapToJsong()
+    
+    json.jsonToMap()
     //println(up.Upper("Good Morning!").toString())
     
     //up.testDate()

@@ -1,15 +1,16 @@
 package learning.hadoop.hbase
-
+/*
 import org.apache.hadoop.hbase.HBaseConfiguration
 import org.apache.hadoop.conf.Configuration
 import org.apache.hadoop.hbase.client.{HTable,Put,Get}
 import org.apache.hadoop.hbase.client.HBaseAdmin
 import org.apache.hadoop.hbase.util.Bytes
 import org.apache.hadoop.hbase.mapreduce.TableInputFormat
-
+*/
 class HbaseConnection {
 
   def Hbase() = {
+    /*
     val conf = HBaseConfiguration.create()
     conf.set("hbase.zookeeper.property.clientPort", "2181") //zookeeper client port
     conf.set("hbase.zookeeper.quorum", "localhost") //zookeeper quorum
@@ -23,6 +24,8 @@ class HbaseConnection {
     // list the tables
     val listtables=admin.listTables() 
     listtables.foreach(println)
+    * 
+    */
     /*
     // let's insert some data in 'mytable' and get the row
     

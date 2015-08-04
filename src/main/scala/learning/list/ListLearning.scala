@@ -6,6 +6,34 @@ import util.control.Breaks._
 
 class ListLearning {
 
+  def mapList() {
+    val location: List[Double] = List(123.222, -45345.12)
+    val map: Map[String, Any] = Map("location"->location)
+    
+    for (key <- map) {
+      
+      if (key._1 == "location") {
+          val list = key._2.asInstanceOf[List[Double]]
+          
+          val coordinate = "(" + list(0) + "," + list(1) + ")"
+          println(s"This is location: ¥coordinate")
+      
+      } else {
+        println(s"${key._1} and ${key._2}")
+      }
+    }
+  }
+  def listMatch() {
+    val location: List[Any] = List(123.222, -45345.12)
+    var lat: String = ""
+      var long: String = ""
+      location match {
+        case a :: b :: Nil => long = a.toString; lat = b.toString()
+        case _ => ""
+      }
+    
+    println(s"Check longtitude and latitude: $long, $lat")
+  }
   
   def concastinateList() {
     val p1 = Map("name"->"lucas", "age"->200)
