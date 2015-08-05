@@ -5,6 +5,7 @@ import algorithms.sort.ScalaSorting
 import list.ListLearning
 import json.JsonLearning
 import timezone.TimeZone
+import timezone.Time
 
 object LetStartit {
   
@@ -30,6 +31,12 @@ object LetStartit {
     time.jodaToJavaDate()
     time.jodaTimeComparision
     time.stringToJodaTime
+    
+    val day:Time = new Time
+    day.splitTime()
+    day.dayOfWeek
+    day.timeDifference
+    day.timeFormat
     
     val sort: ScalaSorting = new ScalaSorting
     sort.jodaTimeSort()

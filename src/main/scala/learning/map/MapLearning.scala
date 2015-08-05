@@ -10,10 +10,11 @@ class MapLearning {
 
   def mapContain() {
     var prospectId: Long = 0
-    var m2: Map[String, Any] = Map("company"->"insidesales.com", "size"->1000.toLong)
-    m2.get("xize") match {
+    var m2: Map[String, Any] = Map("company"->"insidesales.com", "size"->1000.toLong, "location"->(-93.45).toFloat)
+    m2.get("location") match {
       case Some(x: Long) => prospectId = x
-      case _ => println(s"It doesn't contain Long: ${m2.get("xize")}")
+      case None | _=> println(s"It doesn't contain Long: ${m2.get("location")}")
+      
     }
     
     println(s"It contains: $prospectId")
