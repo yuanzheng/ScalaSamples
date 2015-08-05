@@ -1,6 +1,7 @@
 package learning
 
 import map.MapLearning
+import algorithms.sort.ScalaSorting
 import list.ListLearning
 import json.JsonLearning
 import timezone.TimeZone
@@ -29,6 +30,9 @@ object LetStartit {
     time.jodaToJavaDate()
     time.jodaTimeComparision
     time.stringToJodaTime
+    
+    val sort: ScalaSorting = new ScalaSorting
+    sort.jodaTimeSort()
     
     val list: ListLearning = new ListLearning
     list.mapList
