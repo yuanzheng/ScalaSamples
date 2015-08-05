@@ -18,6 +18,7 @@ libraryDependencies ++= List(
 	"org.json4s" %% "json4s-native" % "3.2.11",
 	"org.apache.httpcomponents" % "httpcore" % "4.4",
 	"org.apache.httpcomponents" % "httpclient" % "4.4",
+	"com.typesafe" % "config" % "1.2.1",
 	"org.mongodb" %% "casbah" % "2.8.1",
 	"org.apache.hadoop" % "hadoop-core" % "1.2.1",
 	"org.apache.hbase" % "hbase" % "1.1.1",
