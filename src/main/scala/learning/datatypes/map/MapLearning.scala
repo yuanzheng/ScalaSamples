@@ -1,4 +1,4 @@
-package learning.map
+package learning.datatypes.map
 
 import scala.collection.mutable.{Map=>MMap}
 import util.control.Breaks._
@@ -8,6 +8,9 @@ class MapLearning {
   /** All features of the ClassifiedObject, including both classified and unclassified features */
   //final def getObjectFeatures: scala.collection.immutable.Map[String, Any] = scala.collection.immutable.Map((this.classifiedFeatures ++ this.unclassifiedFeatures).toSeq:_*)
 
+  def mapObject() {
+    //var m2: Map[String, Any] = _
+  }
   def mapContain() {
     var prospectId: Long = 0
     var m2: Map[String, Any] = Map("company"->"insidesales.com", "size"->1000.toLong, "location"->(-93.45).toFloat)
@@ -19,7 +22,6 @@ class MapLearning {
     
     println(s"It contains: $prospectId")
     println(s"It Casts to long: ${m2.get("size").get.toString.toLong}")
-    
     
   }
   

@@ -1,4 +1,4 @@
-package learning.list
+package learning.datatypes.list
 
 import scala.collection.mutable.{Map=>MMap}
 import util.control.Breaks._
