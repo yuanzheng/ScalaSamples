@@ -1,8 +1,8 @@
 package learning
 
-import map.MapLearning
+import datatypes.map.MapLearning
 import algorithms.sort.ScalaSorting
-import list.ListLearning
+import datatypes.list.ListLearning
 import json.JsonLearning
 import timezone.TimeZone
 import timezone.Time

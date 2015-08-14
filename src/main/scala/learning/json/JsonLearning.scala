@@ -172,6 +172,9 @@ class JsonLearning {
   }
   
   
+  def createJObject() {
+    var response: JObject = ("status" -> "") ~ ("service_response" -> "")
+  }
   
 
 }
