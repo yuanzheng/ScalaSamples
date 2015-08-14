@@ -50,6 +50,7 @@ abstract class MongodbRepository(val configKey: String, val collectionName: Stri
       val server = new ServerAddress(host, port)
       //val credentials = MongoCredential.createScramSha1Credential(username, database, password.toCharArray())
       //val mongoClient = MongoClient(server, List(credentials))
+      println(s"Setting up connection to: $key")
       val mongoClient = MongoClient(server)
 
       mongoClients = mongoClients + (key -> mongoClient)
@@ -61,6 +62,7 @@ abstract class MongodbRepository(val configKey: String, val collectionName: Stri
     val key = host+":"+port
     
     mongoClients = Map() ++ mongoClients-key
+    println(s"Mongodb connection is closed: $key")
   }
   
 }

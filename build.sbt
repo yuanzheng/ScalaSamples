@@ -14,6 +14,8 @@ resolvers += "Spy" at "http://files.couchbase.com/maven2/"
 
 libraryDependencies ++= List(
 	"junit" % "junit" % "4.10" % "test",
+	"org.scalatest" % "scalatest_2.11" % "2.2.4" % "test",
+    "org.scalamock" %% "scalamock-scalatest-support" % "3.2" % "test",
 	"org.json4s" %% "json4s-native" % "3.2.11",
 	"org.json4s" %% "json4s-native" % "3.2.11",
 	"org.apache.httpcomponents" % "httpcore" % "4.4",

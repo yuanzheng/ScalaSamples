@@ -4,11 +4,18 @@ import learning.classes.traits.Human
 import com.mongodb.casbah.Imports._
 import scala.reflect.runtime._
 import scala.reflect.runtime.universe._
+import org.joda.time.{LocalDateTime, DateTime, DateTimeZone}
+import com.mongodb.casbah.commons.conversions.scala._
 
 class HumanMongoRepository[P <: Human](configKey: String = "", collectionName: String = "") extends MongodbRepository(configKey, collectionName) {
-
+  /** Explicitly enable serialization. Joda time is saved to MongoDB as proper BSON Dates */
+  RegisterJodaTimeConversionHelpers()
   
   def save(human: P): WriteResult = {
+    
+    AddDateCreated(human)
+    AddDateModified(human)
+    println(s"Check before saving: ${human.toString()}")
     var m: Map[String, Any] = human.toMap()
     coll.insert(m)
   }
@@ -30,6 +37,15 @@ class HumanMongoRepository[P <: Human](configKey: String = "", collectionName: S
     coll.remove(MongoDBObject("_id" -> new ObjectId(id)))
   }
   
+  def AddDateCreated(human: P) {
+    val current = new DateTime().withZone(DateTimeZone.UTC)
+    human.set("date_created", current)
+  }
+  
+  def AddDateModified(human: P) {
+    val current = new DateTime().withZone(DateTimeZone.UTC)
+    human.set("date_modified", current)
+  }
   
   /*private def getClassifiedObjectInstance: P = {
     val cm: ClassMirror = currentMirror.reflectClass(typeOf[P].typeSymbol.asClass)
