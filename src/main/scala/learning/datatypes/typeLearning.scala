@@ -10,6 +10,8 @@ class typeLearning {
   /** lazy : evaluated once when need */
   lazy val testOnce = 20
   
+  /** implicit */
+  
   /** call by value */
   def callByValue(age: Int) = {}
   /** call by value */

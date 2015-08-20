@@ -6,7 +6,10 @@ import scala.reflect.runtime._
 import scala.reflect.runtime.universe._
 import org.joda.time.{LocalDateTime, DateTime, DateTimeZone}
 import com.mongodb.casbah.commons.conversions.scala._
-
+/** Add data into Mongodb, we use an object(human). After converting Object into a Map, We
+ *  can insert the map into Mongodb 
+ * Note: 
+ */
 class HumanMongoRepository[P <: Human](configKey: String = "", collectionName: String = "") extends MongodbRepository(configKey, collectionName) {
   /** Explicitly enable serialization. Joda time is saved to MongoDB as proper BSON Dates */
   RegisterJodaTimeConversionHelpers()

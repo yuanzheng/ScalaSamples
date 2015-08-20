@@ -10,7 +10,7 @@ class AdultMongoRepositoryTest extends FlatSpec with Matchers {
     var repo:AdultMongoRepository = null
     try {
         repo = new AdultMongoRepository
-        val people: Adult = new Adult
+        val people: Adult = new Adult("12")
         people.set("firstName", "Lucas")
         people.set("age", 200)
         repo.save(people)
