@@ -14,6 +14,9 @@ resolvers += "Spy" at "http://files.couchbase.com/maven2/"
 
 libraryDependencies ++= List(
 	"junit" % "junit" % "4.10" % "test",
+	"com.typesafe.slick" %% "slick" % "2.1.0",
+	"mysql" % "mysql-connector-java" % "5.1.22",
+    "org.virtuslab" % "unicorn-core_2.11" % "0.6.2",
 	"org.scalatest" % "scalatest_2.11" % "2.2.4" % "test",
     "org.scalamock" %% "scalamock-scalatest-support" % "3.2" % "test",
 	"org.json4s" %% "json4s-native" % "3.2.11",
