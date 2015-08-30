@@ -17,6 +17,8 @@ object LetStartit {
     val up = new Functions
     val map: MapLearning = new MapLearning
     map.addNewElementToImmutableMap
+    map.convertMapValueType()
+    /*
     map.removeFromMap()
     map.newBuilder()
     map.appendTwoMaps()
@@ -47,6 +49,8 @@ object LetStartit {
     json.mapToJsong()
     
     json.jsonToMap()
+    * 
+    */
     //println(up.Upper("Good Morning!").toString())
     
     //up.testDate()

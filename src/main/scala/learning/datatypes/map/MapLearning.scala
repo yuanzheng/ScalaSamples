@@ -28,10 +28,23 @@ class MapLearning {
   def addNewElementToImmutableMap() {
      var m2: Map[String, Any] = Map("company"->"insidesales.com", "size:12"->1000)
      
-     val people = Map("name"->"Lucas Song")
-     m2 = m2 + ("People" -> people)
+     val people: Map[String, Any] = Map("name"->"Lucas Song")
+     m2 += ("name"->"")//("People" -> people)
      
      println(s"Add an Element: $m2")
+     
+     m2.foreach(f=> {
+       f._2 match {
+         case string: String => {
+           if (!f._2.toString().trim().isEmpty())
+             println(s"---- key:${f._1}, and value:${f._2.toString()}")
+         }
+         case _ =>{
+           println(s"---- Others: key:${f._1}, and value:${f._2.toString()}")
+         }
+       }
+     })
+    
   }
   def removeFromMap() {
     var m2: Map[String, Any] = Map("company"->"insidesales.com", "size:12"->1000)
@@ -106,7 +119,8 @@ class MapLearning {
     val oldMap3: Map[String, Any] = Map(
         "name"->"song",
         "age"->120,
-        "birth"->date)
+        "birth"->date,
+        "Empty"->"")
 //convert 3 -- not true!
     val mapString: Map[String, String] = oldMap3.asInstanceOf[scala.collection.immutable.Map[String,String]]
     if(mapString.get("age").get == classOf[String]){
@@ -119,8 +133,17 @@ class MapLearning {
     } else {
       println(s"birth is ${mapString.get("birth").get.getClass}")
     }
+    
+   
     println(s"new Map to String: $mapString")
     
+    var newString: Map[String, String] = Map[String, String]()
+    oldMap3 map {x=>{
+      if (!x._2.toString().isEmpty())
+        newString += (x._1-> x._2.toString())
+    }
+    }
+    println(s"Now the new Map to String: $newString")
     
     // TODO
     /** converting map[string, string] to map[string, any] */
@@ -185,11 +208,11 @@ class MapLearning {
   }
   
   def convertMap() = {
-      val map: MMap[String, String] = MMap()
+      
       val testMap: Map[String, Any] = Map("name"->"Lucas", "age"->200)
-            testMap foreach (x=> map += (x._1->x._2.toString()))
-
-      println(s"Any map is converted: $testMap")
+           // testMap foreach (x=> map += (x._1->x._2.toString()))
+    val map: Map[String, String] =testMap map {x=>(x._1, x._2.toString())}
+      println(s"Any map is converted: $map")
   }
   
   def testMap(): Map[String, String] = {

@@ -6,6 +6,23 @@ import util.control.Breaks._
 
 class ListLearning {
 
+  def listHeadLast() = {
+    val test = List()
+    
+    println(s"Get empty list Head: ${test.headOption}")
+    println(s"Get empty list List: ${test.lastOption}")
+    
+    val test2 = List("hello")
+    
+    println(s"Get $test2 Head: ${test2.headOption}")
+    println(s"Get $test2 List: ${test2.lastOption}")
+    
+    val test3 = List("hello", "world")
+    
+    println(s"Get $test3 Head: ${test3.headOption}")
+    println(s"Get $test3 list List: ${test3.lastOption}")
+  }
+  
   def mapList() {
     val location: List[Double] = List(123.222, -45345.12)
     val map: Map[String, Any] = Map("location"->location)
