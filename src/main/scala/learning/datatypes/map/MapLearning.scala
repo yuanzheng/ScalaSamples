@@ -11,6 +11,8 @@ class MapLearning {
   def mapObject() {
     //var m2: Map[String, Any] = _
   }
+  
+  
   def mapContain() {
     var prospectId: Long = 0
     var m2: Map[String, Any] = Map("company"->"insidesales.com", "size"->1000.toLong, "location"->(-93.45).toFloat)

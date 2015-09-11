@@ -3,13 +3,8 @@ package learning.repositories.mongodb
 import com.mongodb.casbah.Imports._
 import learning.configuration.ConfigManager 
 
-/**  
-  * 
-  */
 abstract class MongodbRepository(val configKey: String, val collectionName: String) {
 
-  private var mongoClients: Map[String, MongoClient] = Map()
-  
   /** Setup configuration values */
   lazy val config = ConfigManager.getConfig()
   lazy val host = config.getString("mongo." + configKey + ".host")
@@ -28,41 +23,56 @@ abstract class MongodbRepository(val configKey: String, val collectionName: Stri
 
   /** Close the db connection */
   def close() = {
-    mongoClient.close()
-    
-    removeMongoClient(host, port)
+    if (mongoClient != null)
+      MongoClientFactory.removeMongoClient(host, port)
+      
+    mongoClient = null
   }
   
   /** Initialize the mongo client and get references to the db and collection */
   private def initialize() = {
-      mongoClient = getMongoClient(host, port, dbName, username, password)
+    println(s"MongoDB connection is setting: host=$host, port=$port, dbName=$dbName, username=$username, passwd=$password")
+    mongoClient = MongoClientFactory.getMongoClient(host, port, dbName, username, password)
+    println(s"Is dbName set? ${mongoClient.databaseNames()}")
     db = mongoClient(dbName)
     coll = db(collectionName)
   }
   
-  
-  private def getMongoClient(host: String, port: Int, database: String, username: String, password: String): MongoClient = {
+}  
+
+object MongoClientFactory {
+    
+  private var mongoClients: Map[String, MongoClient] = Map()
+
+  def getMongoClient(host: String, port: Int, database: String, username: String, password: String): MongoClient = {
 
     val key = host+":"+port
 
     if (mongoClients.get(key).isEmpty) {
 
       val server = new ServerAddress(host, port)
-      //val credentials = MongoCredential.createScramSha1Credential(username, database, password.toCharArray())
-      //val mongoClient = MongoClient(server, List(credentials))
       println(s"Setting up connection to: $key")
       val mongoClient = MongoClient(server)
 
+      println(s"The existed connection are: $mongoClients")
       mongoClients = mongoClients + (key -> mongoClient)
+      println(s"Added new connection: $mongoClients")
     }
     mongoClients.get(key).get
   }
   
-  private def removeMongoClient(host: String, port: Int) {
+  def removeMongoClient(host: String, port: Int) {
+    println(s"Number of connections was: $mongoClients")
     val key = host+":"+port
     
-    mongoClients = Map() ++ mongoClients-key
+    val mongoClient =  mongoClients.get(key) 
+    if (mongoClient != None) {
+      mongoClient.get.close()
+      mongoClients = Map() ++ mongoClients-key
+    }
+      
     println(s"Mongodb connection is closed: $key")
+    println(s"Number of connections: $mongoClients")
   }
   
 }
