@@ -35,6 +35,7 @@ libraryDependencies ++= List(
 
  
 lazy val scala_core = RootProject ( file("../../Neuralytics/ScalaCore") )
+testOptions in Test += Tests.Argument(TestFrameworks.ScalaTest, "-u", "target/test-reports", "-oDS")
 
 ivyXML :=
   <dependencies>

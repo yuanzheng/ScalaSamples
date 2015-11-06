@@ -2,10 +2,83 @@ package learning.datatypes.list
 
 import scala.collection.mutable.{Map=>MMap}
 import util.control.Breaks._
-
+import java.util.regex.Pattern
+import scala.util.matching.Regex
 
 class ListLearning {
 
+  
+  def listType() = {
+    val test1: Map[String, Any] = Map("ordered_gates" -> classOf[List[String]], "location" -> classOf[List[Double]])
+    
+    val value1: String = "(Contact,Appointment Set,Appointment Held,Qualified Opportunity)"
+    val value2: String = "(23.2, -100.09, 123.987)"
+
+    test1.get("location").get match {
+      case  a if a == classOf[List[_]] => {
+        //if (a.head.getClass() == "")
+        println(s"What is the Class: ${a.asInstanceOf[AnyRef].getClass}")
+        val pattern: String = "\\(?([-+]?\\d+(.\\d+)?)\\s*(,\\s*([-+]?\\d+(.\\d+)?))*\\)?"
+        val patternCompile = Pattern.compile(pattern)
+        val matcher = patternCompile.matcher(value2.trim())
+        
+        if(matcher.matches()) {
+          val numGroups = matcher.groupCount 
+          println(s"Total elements: $numGroups")
+          var message = s"Got doubles: "
+          for(i <- 0 until numGroups) {
+            val v3 = matcher.group(i)
+          
+            message += s"$v3 and "
+            
+          }
+          println(message)
+        }else {
+          val message = s"invalid (longitude, latitude) format- '$value2'"
+          println(message)
+        }
+      }
+      case a if a == classOf[List[String]] => {
+        
+      }
+    }
+    
+  }
+  
+  def listSize() = {
+    val list1: List[String] = Nil
+    val list2: List[String] = List()
+    val list3: List[String] = List("Hello", "world", "lucas")
+    
+    list1 match {
+      case a::b => println("Pattern=> y: List[a]")
+      case Nil => println("Pattern=> Nil")
+      case _ => println("Pattern=> Any")
+    }
+    
+    list2 match {
+      case a::b => println("Pattern=> y: List[a]")
+      case Nil => println("Pattern=> Nil")
+      case _ => println("Pattern=> Any")
+    }
+    
+    
+    list3 match {
+      case a::b if (list3.contains("wold"))=> println("Pattern=> a::b")
+      case Nil => println("Pattern=> Nil")
+      case _ => println("Pattern=> Any")
+    }
+  }
+  def zipListsToMap() {
+    val list1: List[String] = List("name", "age")
+    val list2: List[Any] = List("lucas", 200)
+    
+    val result = list1.zip(list2).toMap
+    
+    println(s"Two lists were ziped into a Map: $result")
+  }
+  
+  
   def listHeadLast() = {
     val test = List()
     
@@ -52,7 +125,7 @@ class ListLearning {
     println(s"Check longtitude and latitude: $long, $lat")
   }
   
-  def concastinateList() {
+  def appendList1() {
     val p1 = Map("name"->"lucas", "age"->200)
     val p2 = Map("name"->"song", "age"->2000)
     var people: List[Map[String,Any]] = List()
@@ -62,32 +135,7 @@ class ListLearning {
     
   }
   
-  def emptyList() = {
-     val newList: List[String] = List()
-     println(s"check list: ${newList.last}")
-  }
- 
-  // Using Builder to create List of Map
-  def listOfMap() {
-    val test:List[String] = List("DATE,VALUE","2015-01-02,12.230", "2015-01-03,2.430")
-    //val m1:Map[String,String] = Map("DATE" -> "2015-01-02", "VALUE" -> "12.230")
-    //val m2:Map[String,String] = Map("DATE" -> "2015-01-03", "VALUE" -> "2.430")
-    val data = List.newBuilder[Map[String, String]]
-
-    for (i <- 1 until test.size) {
-        val dateValue = test(i).split(',')
-        data ++= List(Map("DATE" -> dateValue(0), "VALUE" -> dateValue(1)))
-        
-      }
-      
-      val result = (data.result).toList
-    for(m <- result) {
-      println("TEST Map: " + m("DATe"))
-      println("TEST Map: " + m("VALUE"))
-    }
-  }
-  
-  def appendList(): Unit= {
+  def appendList2(): Unit= {
       println("Test breakable:")
       var tlist:List[Map[String,String]] = List[Map[String,String]]()
                                                   //> tlist  : List[Map[String,String]] = List()
@@ -120,6 +168,44 @@ class ListLearning {
       println("Check m map: " + mm)
       
   }
+  
+  
+  def concatenateList() {
+    val test1:List[String] = List("DATE,VALUE","2015-01-02,12.230", "2015-01-03,2.430")
+    val test2:List[String] = List("again","5102-01-02,12.230", "20-01-03,2.430")
+    
+    val result = test1 ++ test2
+    
+    println(s"Concatenate lists: $result")
+  }
+  
+  
+  def emptyList() = {
+     val newList: List[String] = List()
+     println(s"check list: ${newList.last}")
+  }
+ 
+  // Using Builder to create List of Map
+  def listOfMap() {
+    val test:List[String] = List("DATE,VALUE","2015-01-02,12.230", "2015-01-03,2.430")
+    //val m1:Map[String,String] = Map("DATE" -> "2015-01-02", "VALUE" -> "12.230")
+    //val m2:Map[String,String] = Map("DATE" -> "2015-01-03", "VALUE" -> "2.430")
+    val data = List.newBuilder[Map[String, String]]
+
+    for (i <- 1 until test.size) {
+        val dateValue = test(i).split(',')
+        data ++= List(Map("DATE" -> dateValue(0), "VALUE" -> dateValue(1)))
+        
+      }
+      
+      val result = (data.result).toList
+    for(m <- result) {
+      println("TEST Map: " + m("DATe"))
+      println("TEST Map: " + m("VALUE"))
+    }
+  }
+  
+  
 
   def printList() {
 

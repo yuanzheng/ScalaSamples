@@ -137,6 +137,26 @@ class JsonLearning {
   
   implicit val formats = DefaultFormats
   
+  def validateJson() = {
+    val json: String = """
+      {
+          "source_key": "LucasSource:C552BA",
+          "linear_process": "Sales Qualified Leads",
+          "customer_to_standard_map": {
+              "called.anything": "Correct Contact",
+              "meeting": "Appointment"
+          }
+      }
+      
+      """
+    val mappingDefinition: Map[String, Any] = org.json4s.native.JsonMethods.parse(json).extract[Map[String, Any]]
+    
+    val standardmapping: Map[String, String] = mappingDefinition.get("customer_to_standard_map").get.asInstanceOf[Map[String, String]]
+    
+    println(s"null Json: $standardmapping")
+
+  }
+  
   def jsonToMap() {
     val json: JValue = org.json4s.native.JsonMethods.parse(data.interaction)
     val map: Map[String, Any] = json.extract[Map[String, Any]]
@@ -174,7 +194,12 @@ class JsonLearning {
   
   def createJObject() {
     var response: JObject = ("status" -> "") ~ ("service_response" -> "")
+    
+    // by JField
+    
   }
   
+  
+ 
 
 }

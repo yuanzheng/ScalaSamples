@@ -7,8 +7,10 @@ class HumanTest extends FlatSpec with Matchers {
 
   
   "Human trait" should "be able to run functions" in {
-    val people: Adult = new Adult("12")
+    val people: Adult2 = new Adult2("12")
+    people.humanId should be ("12")
     
+    people.setHumanId("21")
     
   }
 }

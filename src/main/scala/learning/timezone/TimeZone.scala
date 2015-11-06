@@ -9,7 +9,12 @@ import scala.util.control.Breaks.{break, breakable}
 
 class TimeZone {
   
-  
+  def testToday() {
+    val jodaTime1: DateTime = DateTime.now()
+    
+    println(s"Today time: $jodaTime1")
+    println(s"day of week: ${jodaTime1.getDayOfWeek.toString()}")
+  }
   def jodaTimeComparision() {
     val date1: String = "2014-03-12T17:28:19.230Z"
     val date2: String = "2014-03-12T17:28:19.231Z"

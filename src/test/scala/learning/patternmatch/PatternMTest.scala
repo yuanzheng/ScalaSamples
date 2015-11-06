@@ -10,5 +10,9 @@ class PatternMTest extends FlatSpec with Matchers {
     val test  =  new PatternM
     test.replaceIF()
   }
-
+  
+  it should "handle None pattern" in {
+    val test = new PatternM
+    test.nonePattern()
+  }
 }

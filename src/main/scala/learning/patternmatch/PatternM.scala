@@ -42,5 +42,16 @@ class PatternM {
     }
   }
   
+  
+  def nonePattern() = {
+    val aMap: Map[String, String] = Map("last_name"->"song")
+    
+    aMap.get("last_name") match {
+      case Some(a: String) => println(s"yes, $a")
+      case None => ???
+    }
+    
+  }
+  
 
 }

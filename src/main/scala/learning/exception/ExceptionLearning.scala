@@ -2,7 +2,7 @@ package learning.exception
 
 import java.util.Date
 import java.text.SimpleDateFormat
-
+import scala.util.control.Exception.catching
 
 class ExceptionLearning {
   
@@ -16,5 +16,11 @@ class ExceptionLearning {
         result = new Date(new SimpleDateFormat(dateFormat).parse(date).getTime())
     }
   }
+  
+  // exception will be caught, None will be returned
+  def safeStringToLong(str: String): Option[Long] = {
+    catching(classOf[NumberFormatException]) opt str.toLong
+  }
+
 
 }

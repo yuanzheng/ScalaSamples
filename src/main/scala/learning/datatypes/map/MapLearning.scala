@@ -12,6 +12,11 @@ class MapLearning {
     //var m2: Map[String, Any] = _
   }
   
+  def loopMap() {
+    val result = concatenateTwoMaps.map { x => (x._1, x._2.toString) }
+    println(s"See: $result")
+  }
+  
   
   def mapContain() {
     var prospectId: Long = 0
@@ -29,9 +34,11 @@ class MapLearning {
   
   def addNewElementToImmutableMap() {
      var m2: Map[String, Any] = Map("company"->"insidesales.com", "size:12"->1000)
+     m2 += ("name"->"")//("People" -> people)
      
      val people: Map[String, Any] = Map("name"->"Lucas Song")
-     m2 += ("name"->"")//("People" -> people)
+     val tmp: Map[String, Any] = m2++people
+     
      
      println(s"Add an Element: $m2")
      
@@ -88,17 +95,22 @@ class MapLearning {
 
   }
   
-  def appendTwoMaps(): Unit = {
-    val m1: MMap[String, Any] = MMap("name"->"song", "age"->200)
-    val m2: MMap[String, Any] = MMap("company"->"insidesales.com", "size"->1000)
+  def concatenateTwoMaps(): Map[String, Any] = {
+    val m1: Map[String, Any] = Map("name"->"song", "age"->200)
+    val m2: Map[String, Any] = Map("company"->"insidesales.com", "size"->1000)
     
-    val newMap: Map[String, Any] = Map((m1++m2).toSeq:_*)
+    val newMap: Map[String, Any] = m1++m2
     println(s"new Map: $newMap")
+    
     
     val whattype: Any = m2.get("size").getOrElse("")
     println(s"check get None ${whattype.getClass()}")
     
+    val m3: MMap[String, Any] = MMap("name"->"song", "age"->200)
+    val m4: MMap[String, Any] = MMap("company"->"insidesales.com", "size"->1000)
     
+    
+    newMap
   }
   
   def convertMapValueType() {
@@ -295,6 +307,23 @@ class MapLearning {
         classifiedPerson
         * 
         */
+  }
+  
+  def mapIsEmpty() = {
+    val test1 = None
+    val test2: Option[Map[String, String]] = Some(Map())
+    //val test3 = Some(Map("name" -> "lucas"))
+    
+    check(test2)
+    
+    def check(map: Option[Map[String, String]])= {
+      if (map.isEmpty || map.get.isEmpty){
+        println(s"Empty --- This is an Empty map")
+      } else {
+        println("Empty --- Ok")
+      }
+    }
+    
   }
 
 }

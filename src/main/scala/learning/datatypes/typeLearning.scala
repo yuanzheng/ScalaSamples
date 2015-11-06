@@ -32,7 +32,20 @@ object typeLearning {
   def callByName(name: => String) = {}
   /** call by name */
   def newAge: Int = 3000
+  
+  // None type
+  def gotNone() = {
+    val fieldName: String = "first_name"
+   isNone(fieldName) orElse option(fieldName)
+  }
+  
+  private def isNone(value: String): Option[String] = {
+    None
+  } 
 
+  private def option(value: String): Option[String] = Some("default")
+   
+  
   /** a sequence of (Int), Int*  */
 
 }

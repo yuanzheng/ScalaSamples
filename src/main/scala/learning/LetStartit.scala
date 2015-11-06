@@ -16,8 +16,8 @@ object LetStartit {
     
     val up = new Functions
     val map: MapLearning = new MapLearning
-    map.addNewElementToImmutableMap
-    map.convertMapValueType()
+    //map.addNewElementToImmutableMap
+    //map.convertMapValueType()
     /*
     map.removeFromMap()
     map.newBuilder()
@@ -27,8 +27,10 @@ object LetStartit {
     map.mapContain()
     map.addNewElementToMap
     
-    
+    */
     val time: TimeZone = new TimeZone
+    time.testToday()
+    /*
     time.UDate()
     time.jodaToJavaDate()
     time.jodaTimeComparision
