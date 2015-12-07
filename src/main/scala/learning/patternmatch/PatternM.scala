@@ -2,6 +2,22 @@ package learning.patternmatch
 
 class PatternM {
   
+  def matchOption() = {
+    def check(value: Option[Any]): String = {
+      value match {
+        case Some(a: String) if(!a.isEmpty()) => "match option is valid"
+        case _ => "Invalid match option"
+      }
+    }
+    
+    println(s"Check 1 string, ${check(Some("Hello world"))}")
+    println(s"Check 2 empty, ${check(Some(""))}")
+    println(s"Check 3 None, ${check(None)}")
+    println(s"Check 4 Long, ${check(Some("12".toLong))}")
+    println(s"Check 5 Int, ${check(Some(11))}")
+  }
+  
+  
   def replaceIF() = {
     val str1 = ""
     val str2 = ""

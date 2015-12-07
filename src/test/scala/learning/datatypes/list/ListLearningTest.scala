@@ -7,6 +7,7 @@ class ListLearningTest extends FlatSpec with Matchers {
 
   "List Learning" should "test Head and Last" in {
     val test= new ListLearning
+    val thrown = the [java.util.NoSuchElementException] thrownBy test.emptyList()
     
     //test.listHeadLast()
     //test.concatenateList()
@@ -22,5 +23,11 @@ class ListLearningTest extends FlatSpec with Matchers {
     val test = new ListLearning
     test.listType()
     //test.listSize()
+  }
+  
+  it should "convert list to String" in {
+    val test = new ListLearning
+    
+    test.convertListToString()
   }
 }

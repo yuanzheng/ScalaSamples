@@ -15,4 +15,9 @@ class PatternMTest extends FlatSpec with Matchers {
     val test = new PatternM
     test.nonePattern()
   }
+  
+  it should "match Option values" in {
+    val test = new PatternM
+    test.matchOption()
+  }
 }

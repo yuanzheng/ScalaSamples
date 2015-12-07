@@ -20,6 +20,14 @@ class typeLearningTest extends FlatSpec with Matchers {
     typeLearning.byValue should be (1)
     println(s"by name: 2+change = ${typeLearning.byName}")
     println(s"by value: 1+ change = ${typeLearning.byValue}")
+    
   }
 
+  it should "tell value types" in {
+    typeLearning.typeCheck()
+  }
+  
+  it should "run implicit objects" in {
+    typeLearning.defTest()
+  }
 }

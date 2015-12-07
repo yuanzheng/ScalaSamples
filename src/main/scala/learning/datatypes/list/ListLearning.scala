@@ -8,6 +8,17 @@ import scala.util.matching.Regex
 class ListLearning {
 
   
+  def convertListToString() = {
+    val test: List[Double] = List(-111.675, 40.2319, 2222.1)
+    
+    val elements: String = test mkString ", "
+    
+    val location: String = "(" + elements + ")"
+    
+    println(s"Convert list to String: $location")
+    
+  }
+  
   def listType() = {
     val test1: Map[String, Any] = Map("ordered_gates" -> classOf[List[String]], "location" -> classOf[List[Double]])
     
@@ -182,7 +193,8 @@ class ListLearning {
   
   def emptyList() = {
      val newList: List[String] = List()
-     println(s"check list: ${newList.last}")
+     println(s"Check empty list head: ${newList.head}")
+     println(s"check empty list last: ${newList.last}")
   }
  
   // Using Builder to create List of Map
