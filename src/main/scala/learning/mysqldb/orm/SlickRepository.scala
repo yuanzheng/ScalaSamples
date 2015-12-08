@@ -25,12 +25,23 @@ abstract class SlickRepository[Id <: BaseId, Entity <: WithId[Id], Table <: IdTa
   // Database used for managing session
   val db:Database
   
+  def setCurrentTimezone(timezone: String) = {
+    // +? operator appends parameters safely to a string to help preven sql injection
+    val query = (StaticQuery.u + "SET time_zone = '" +? timezone + "'").execute
+  }
+  
   /*
    * Implicit session used when running Slick statements
    * Lazy val is needed because we only need it to process one time
    * and we need it to be delayed so that db is defined by the time it's called.
    */
   implicit lazy val session: Session = db.createSession()
+  
+  /** Gets all [Entity] using an Iterator */
+  def getAllWithIterator(): Iterator[Entity] = {
+    query.list.iterator
+  }
+
   
   /** Gets a count of all [Entity] */
   def countAll():Int = {
@@ -51,7 +62,25 @@ abstract class SlickRepository[Id <: BaseId, Entity <: WithId[Id], Table <: IdTa
     result
   }
   
-  
+  /** Gets a batch of [Entity] using the parameters as filters
+    *
+    * @param count     The number of records to get
+    * @param offset    The number of records from the beginning from which to
+    *                  start capturing
+    * @param ascending Whether the result should be ordered ascending or descending
+    *                  before applying count and offset filters
+    *
+    * @return A List of [Entity] matching criteria defined by parameters
+    */
+  def getBatch(count:Int, offset:Int, ascending:Boolean = true):List[Entity] = {
+    if (ascending) {
+      var nq = query.sortBy(_.id.asc).drop(offset).take(count)
+      nq.list
+    } else {
+      query.sortBy(_.id.desc).drop(offset).take(count).list
+    }
+  }
+
   
   /** Close the db connection */
   def close() = {
