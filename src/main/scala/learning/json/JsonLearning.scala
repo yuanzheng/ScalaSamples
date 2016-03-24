@@ -175,6 +175,17 @@ class JsonLearning {
   }
   
   
+  def jsonToMap2() {
+    val result: Map[String, Any] = parse(string2JsonInput(data.interaction)).values.asInstanceOf[scala.collection.immutable.Map[String,Any]]
+
+  }
+  
+  def jsonToMap3(): Map[String, Any] = {
+    val json: JValue = parse(data.interaction)
+    val m: Map[String, Any] = json.extract[Map[String, Any]]
+    m
+  }
+  
   def mapToJsong() {
     
     val map: Map[String, Any] = Map("name"->"lucas", "age"->"200")

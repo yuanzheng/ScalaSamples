@@ -12,7 +12,10 @@ class MutableMapLearning {
      
      
   }
-     
+    
+  def check(map: Map[String, String]) = {
+    
+  }
   
   
 

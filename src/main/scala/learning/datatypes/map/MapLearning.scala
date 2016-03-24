@@ -5,6 +5,11 @@ import util.control.Breaks._
 import java.util.Date
 
 class MapLearning {
+  
+  
+  def convertMap() = {
+    scala.collection.immutable.Map(Map.toSeq:_*)
+  }
   /** All features of the ClassifiedObject, including both classified and unclassified features */
   //final def getObjectFeatures: scala.collection.immutable.Map[String, Any] = scala.collection.immutable.Map((this.classifiedFeatures ++ this.unclassifiedFeatures).toSeq:_*)
 

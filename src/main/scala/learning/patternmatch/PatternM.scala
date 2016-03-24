@@ -58,6 +58,11 @@ class PatternM {
     }
   }
   
+  def length[A](list : List[A]) : Int = list match {
+    case _ :: tail => 1 + length(tail)
+    case Nil => 0
+  }
+  
   
   def nonePattern() = {
     val aMap: Map[String, String] = Map("last_name"->"song")

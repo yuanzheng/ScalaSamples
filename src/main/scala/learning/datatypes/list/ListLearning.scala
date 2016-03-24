@@ -7,6 +7,18 @@ import scala.util.matching.Regex
 
 class ListLearning {
 
+  def trimListNumber() = {
+    val test: String = "2\r,\r23,100\r\n"
+    val b: List[String] = test.split(",").toList.map(_.trim)
+    
+    println(s"list of numbers: $b")
+  }
+  
+  def convertListIntToString() ={
+    val test: List[Int] = List(-111, 40, 2222)
+    
+    val result: List[String] = test.map(_.toInt.toString)
+  }
   
   def convertListToString() = {
     val test: List[Double] = List(-111.675, 40.2319, 2222.1)

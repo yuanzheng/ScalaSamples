@@ -23,8 +23,8 @@ abstract class MongodbRepository(val configKey: String, val collectionName: Stri
 
   /** Close the db connection */
   def close() = {
-    if (mongoClient != null)
-      MongoClientFactory.removeMongoClient(host, port)
+    println(s"Closing repository for collection [$collectionName]")
+    MongoClientFactory.removeMongoClient(host, port)
       
     mongoClient = null
   }
@@ -38,7 +38,15 @@ abstract class MongodbRepository(val configKey: String, val collectionName: Stri
     coll = db(collectionName)
   }
   
+  /** Gets a count of all [Entity] */
+  def countAll(): Int = {
+    println("MongoRepository::countAll")
+    coll.count()
+  }
+  
 }  
+
+
 
 object MongoClientFactory {
     
@@ -65,12 +73,7 @@ object MongoClientFactory {
     println(s"Number of connections was: $mongoClients")
     val key = host+":"+port
     
-    val mongoClient =  mongoClients.get(key) 
-    if (mongoClient != None) {
-      mongoClient.get.close()
-      mongoClients = Map() ++ mongoClients-key
-    }
-      
+    mongoClients = Map() ++ mongoClients-key
     println(s"Mongodb connection is closed: $key")
     println(s"Number of connections: $mongoClients")
   }

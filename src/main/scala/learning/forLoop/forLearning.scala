@@ -5,6 +5,13 @@ class forLearning {
   val requestedSymbols = List("MSFT", "IXIC")
   val theSet = List("DJIA", "GSPC", "IXIC", "XAX")
   
+  def forCount() = {
+    
+    for(i <- 0 to 3)
+    {
+      println(s"Count: $i")
+    }
+  }
   def forFilter() = {
       
       val result = forYield(theSet)
