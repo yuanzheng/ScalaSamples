@@ -17,6 +17,7 @@ libraryDependencies ++= List(
 	"com.typesafe.slick" %% "slick" % "2.1.0",
 	"mysql" % "mysql-connector-java" % "5.1.22",
 	"org.apache.commons" % "commons-dbcp2" % "2.1.1",
+	"org.apache.commons" % "commons-csv" % "1.1",
     "org.virtuslab" % "unicorn-core_2.11" % "0.6.2",
 	"org.scalatest" % "scalatest_2.11" % "2.2.4" % "test",
     "org.scalamock" %% "scalamock-scalatest-support" % "3.2" % "test",

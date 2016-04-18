@@ -4,9 +4,27 @@ import scala.collection.mutable.{Map=>MMap}
 import util.control.Breaks._
 import java.util.regex.Pattern
 import scala.util.matching.Regex
+import scala.collection.mutable.ListBuffer
 
 class ListLearning {
 
+  def listBufferLearning(): Unit = {
+    val buf = new ListBuffer[Char]
+    
+    buf += 'h'
+    buf += 'e'
+    buf += 'l'
+    buf += 'l'
+    buf += '0'
+    buf += ' '
+    buf += 'w'
+    buf += 'o'
+    buf += 'r'
+    buf += 'l'
+    buf += 'd'
+    println(s"See: ${buf.mkString}")
+  }
+  
   def trimListNumber() = {
     val test: String = "2\r,\r23,100\r\n"
     val b: List[String] = test.split(",").toList.map(_.trim)
@@ -146,6 +164,24 @@ class ListLearning {
       }
     
     println(s"Check longtitude and latitude: $long, $lat")
+  }
+  
+  /** Append new elmenets at the end of the list
+   * 
+   * very inefficient prossiblity is to use :::, because it takes time proportional
+   * to the length of its first operand. The whole operation takes time proportional to the 
+   * square of the length of the list.
+   * 
+   * A better alternative is to use a ListBuffer
+   */
+  def appendElement(): Unit = {
+    var result: List[String] = List[String]()
+    result = result ::: List("hello")
+    result = result ::: List("world")
+    result = result ::: List("Song")
+    result = result ::: List("Lucas")
+    
+    println(s"See: ${result.mkString}")
   }
   
   def appendList1() {

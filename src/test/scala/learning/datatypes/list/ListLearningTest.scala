@@ -30,4 +30,14 @@ class ListLearningTest extends FlatSpec with Matchers {
     
     test.convertListToString()
   }
+  
+  it should "append a new element at the end" in {
+    val test= new ListLearning
+    test.appendElement()
+  }
+  
+  it should "build string buffer" in {
+    val test= new ListLearning
+    test.listBufferLearning
+  }
 }

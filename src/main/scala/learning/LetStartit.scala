@@ -6,6 +6,8 @@ import datatypes.list.ListLearning
 import json.JsonLearning
 import timezone.TimeZone
 import timezone.Time
+import data.utils.StringUtils
+import org.apache.commons.lang.{StringUtils => utils}
 
 object LetStartit {
   
@@ -13,6 +15,13 @@ object LetStartit {
 
   def main(args: Array[String]) ={
     println("Hello world!")
+    
+    val testword: String = "Good morning, hello, world"
+    if (!StringUtils.isNullOrEmptyOrWhiteSpace(testword))
+    {
+      val result: String = utils.replaceEach(testword, Array("mo","wo"), Array("song", "wi"))
+      println(s"replaced: $result")
+    }
     
     val up = new Functions
     val map: MapLearning = new MapLearning
