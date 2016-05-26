@@ -3,7 +3,12 @@ package learning.json
 import org.json4s._
 import org.json4s.JsonDSL._
 import org.json4s.native.JsonMethods._
-
+/*
+import net.liftweb.json.DefaultFormats
+import net.liftweb.json.Extraction
+import net.liftweb.json.compact
+import net.liftweb.json.render
+*/
 object data {
   val interaction: String= 
     """
@@ -131,6 +136,11 @@ object data {
         ]
     }
     """
+  
+  
+  val listJson: String = """
+    [{"Algorithm": "ISDC Scala NeuralNetwork"}, {"Hidden Layers": "2"}, {"neuralview_contact_model": "yes"}, {"External Sources": "Weather, CPI, GDP, Stock, WebRank"}]
+    """
 }
 
 class JsonLearning {
@@ -184,6 +194,22 @@ class JsonLearning {
     val json: JValue = parse(data.interaction)
     val m: Map[String, Any] = json.extract[Map[String, Any]]
     m
+  }
+  
+  def jsonToList(): Unit = {
+    val json: JValue = parse(data.listJson)
+    val lm: List[_] = json.extract[List[_]]
+
+    println(s"json to list map: $lm")
+  }
+  
+  
+  def listToJson(): Unit = {
+    val json: JValue = parse(data.listJson)
+    val lm: List[_] = json.extract[List[_]]
+
+    val backToJson: String = compact(render(Extraction.decompose(lm)))
+    println(s"back to Json: $backToJson")  
   }
   
   def mapToJsong() {

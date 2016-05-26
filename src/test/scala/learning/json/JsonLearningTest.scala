@@ -12,4 +12,11 @@ class JsonLearningTest extends FlatSpec with Matchers {
  
   }
   
+  it should "be able to convert list map" in {
+    val test = new JsonLearning
+    test.jsonToList()
+    
+    test.listToJson()
+  }
+  
 }

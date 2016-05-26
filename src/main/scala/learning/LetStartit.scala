@@ -36,16 +36,18 @@ object LetStartit {
     map.mapContain()
     map.addNewElementToMap
     
-    */
+    
     val time: TimeZone = new TimeZone
     time.testToday()
-    /*
+    
     time.UDate()
     time.jodaToJavaDate()
     time.jodaTimeComparision
     time.stringToJodaTime
-    
+    */
     val day:Time = new Time
+    day.convertTimeStamp2SQLT()
+    /*
     day.splitTime()
     day.dayOfWeek
     day.timeDifference

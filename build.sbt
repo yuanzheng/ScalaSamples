@@ -22,7 +22,7 @@ libraryDependencies ++= List(
 	"org.scalatest" % "scalatest_2.11" % "2.2.4" % "test",
     "org.scalamock" %% "scalamock-scalatest-support" % "3.2" % "test",
 	"org.json4s" %% "json4s-native" % "3.2.11",
-	"org.json4s" %% "json4s-native" % "3.2.11",
+	"net.liftweb" %% "lift-json" % "2.6+",
 	"org.apache.httpcomponents" % "httpcore" % "4.4",
 	"org.apache.httpcomponents" % "httpclient" % "4.4",
 	"com.typesafe" % "config" % "1.3.0",

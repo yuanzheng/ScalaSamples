@@ -2,12 +2,22 @@ package learning.timezone
 
 import java.util.Calendar
 import java.util.Date
+import java.sql.Timestamp
+import java.sql.Date
 import java.text.SimpleDateFormat
 import org.joda.time.{LocalDateTime, DateTime, DateTimeComparator, DateTimeZone, Minutes, Seconds}
 import org.joda.time.format.{ISODateTimeFormat, DateTimeFormatter, DateTimeFormat}
 import scala.util.control.Breaks.{break, breakable}
 
 class Time {
+  
+  def convertTimeStamp2SQLT(): Unit = {
+    val timestamp: String = "1462573020"
+    val current: java.util.Date = Calendar.getInstance.getTime
+    
+    val currentTimestamp: java.sql.Timestamp = new java.sql.Timestamp(timestamp.toLong*1000)
+    println(s"convert string to timestamp: ${currentTimestamp.toString()}")
+  }
   
   def splitTime() {
     val currentTime: DateTime = new DateTime().withZone(DateTimeZone.UTC)

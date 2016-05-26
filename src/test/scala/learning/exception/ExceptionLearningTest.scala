@@ -11,4 +11,10 @@ class ExceptionLearningTest extends FlatSpec with Matchers {
     
     println(s"Convert to option long: $result")
   }
+  
+  it should "be able to catch cast type exception" in {
+    val exp = new ExceptionLearning
+    exp.catchingException()
+
+  }
 }
