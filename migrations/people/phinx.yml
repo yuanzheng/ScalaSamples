@@ -1,0 +1,15 @@
+paths:
+    migrations: ./people
+
+environments:
+    default_migration_table: migrations
+    default_database: local
+    local:
+        adapter: mysql
+        host: localhost
+        name: test
+        user: root
+        pass: ''
+        port: 3306
+        charset: utf8
+
