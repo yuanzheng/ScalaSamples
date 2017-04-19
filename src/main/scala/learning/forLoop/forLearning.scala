@@ -1,5 +1,7 @@
 package learning.forLoop
 
+import scala.collection.mutable.{Map=>MMap}
+
 class forLearning {
 
   val requestedSymbols = List("MSFT", "IXIC")
@@ -38,7 +40,50 @@ class forLearning {
     
     quandlSymbols
   }
-  
+
+  def yieldListMap(): Unit = {
+    val m1: Map[String, String] = Map("test1" -> "hello", "test2" -> "world")
+    val m2: Map[String, String] = Map("test1" -> "good", "stage_gate" -> "close win")
+    val linearP1: List[Map[String, String]] = List(m2, m1)
+
+    val m3: Map[String, String] = Map("test1" -> "hello", "stage_gate" -> "close W")
+    val m4: Map[String, String] = Map("test1" -> "good", "test2" -> "better")
+    val linearP2: List[Map[String, String]] = List(m3, m4)
+
+    val results = Option(List(linearP1, linearP2))
+
+    var selectedR: List[List[Map[String, String]]] = List()
+
+    results match {
+      case Some(head::tail) => {
+        for (linearP <- results.get) {
+          // Check each linear process, and each linear process has multiple rules
+          var foundIt: Boolean = false
+          val rules: Iterator[Map[String, String]] = linearP.iterator
+          while (rules.hasNext && !foundIt) {
+            // each rule of linear process
+            val nextRule: Map[String, String] = rules.next()
+            if (nextRule.exists(_._1 == "stage_gate") && nextRule.get("stage_gate").get.equalsIgnoreCase("Close win")) {
+              selectedR ::= linearP
+              foundIt = true
+            }
+          }
+
+        }
+      }
+      case _ =>
+    }
+
+
+    println(s"see linearP: $selectedR")
+
+
+
+
+
+  }
+
+
   def foreachList(): Unit = {
     val stocks: List[String] = List("GSPC", "DJIA", "IXIC", "XAX")  
     //var stockBuffer: Buffer[String] = stocks.toBuffer;

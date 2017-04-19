@@ -1,8 +1,10 @@
 package learning.json
 
-import org.json4s._
+import org.json4s.{NoTypeHints, _}
 import org.json4s.JsonDSL._
 import org.json4s.native.JsonMethods._
+import org.json4s.native.Serialization
+import org.json4s.native.Serialization._
 /*
 import net.liftweb.json.DefaultFormats
 import net.liftweb.json.Extraction
@@ -205,10 +207,21 @@ class JsonLearning {
   
   
   def listToJson(): Unit = {
-    val json: JValue = parse(data.listJson)
-    val lm: List[_] = json.extract[List[_]]
+    //val json: JValue = parse(data.listJson)
+    //val lm: List[_] = json.extract[List[_]]
 
-    val backToJson: String = compact(render(Extraction.decompose(lm)))
+    val t1: String = """{"Name": "Lucas", "source_id": "1"}"""
+    val t2: String = """{"Name": "song", "source_id": "2"}"""
+    val t3: String = """{"Name": "yuanzheng", "source_id": "3"}"""
+    val t4: String = """{"Name": "Lucas song", "source_id": "4"}"""
+    
+    var test: List[String] = List()
+    test = t1 :: test
+    test = t2 :: test
+    test = t3 :: test
+    test = t4 :: test
+    println(s"lsit: $test")
+    val backToJson: String = write(test)//compact(render(Extraction.decompose(test)))
     println(s"back to Json: $backToJson")  
   }
   
@@ -234,6 +247,13 @@ class JsonLearning {
     
     // by JField
     
+  }
+
+  def MapAnyToJson() = {
+    val result: Map[String, Any] = Map("key" -> 1, "list" -> List(1,2,3))
+
+    implicit val format = Serialization.formats(NoTypeHints)
+    val trainingSetDetailsJson: String = write(result)
   }
   
   

@@ -1,11 +1,84 @@
 package learning.datatypes.map
 
 import scala.collection.mutable.{Map=>MMap}
+import scala.collection.immutable.ListMap
 import util.control.Breaks._
 import java.util.Date
 
 class MapLearning {
   
+  def getMaxValue(): Unit = {
+    val t2: Map[Long, Int] = Map("1".toLong -> 2, "99".toLong -> 1, "11".toLong -> -1)
+    
+  }
+  def sortMap(): Unit = {
+    val t2: Map[Long, Int] = Map("1".toLong -> 2, "99".toLong -> 1, "12".toLong -> 2, "11".toLong -> -1)
+ 
+    //sort by key
+    val result1: ListMap[Long, Int] = ListMap(t2.toSeq.sortBy(_._1):_*)
+    println(s"sorted map by key: $result1")
+    // sort by value
+    val result2: Map[Long, Int] = ListMap(t2.toSeq.sortBy(_._2):_*).toMap
+    
+    println(s"sorted map by value: $result2")
+    
+    // high to low (by value values)
+    val result3: ListMap[Long, Int] = ListMap(t2.toSeq.sortWith(_._2 > _._2):_*)
+     println(s"sorted map by value (high to low): $result3")
+     
+     var key: Option[Long] = Option(t2.head._1)
+     var value: Option[Int] = Option(t2.head._2)
+     t2.foreach(f => {
+      
+      if (f._2 > value.get) {
+         key = Option(f._1)
+         value = Option(f._2)
+       }
+       else if (f._2 == value.get && f._1 > key.get)
+       {
+         key = Option(f._1)
+       }
+     }
+     )
+    
+     println(s"get the first key value pair: $key, $value}")
+  }
+  
+  
+  def mergeTwoMaps(): Unit = {
+    val t: Map[Long, Int] = Map("1".toLong -> 12, "11".toLong -> 1)
+    val t2: Map[Long, Int] = Map("1".toLong -> 2, "99".toLong -> 1, "11".toLong -> -1)
+    
+    val t3: Map[Long, Int] = t ++ t2.map{ case (k,v) => k -> (v + t.getOrElse(k,0)) }
+    
+    println(s"merge results: $t3")
+  }
+  
+  def updateMapValue(): Unit = {
+    var test: Map[String, String] = Map("ismlp" -> "good",
+      "ismlp_2" -> "morning",
+      "ismlp_3" -> "Lucas",
+      "ismlp_4" -> "Well",
+      "ismlp_5" -> "Done")
+
+    test += ("ismlp" -> "bad")
+
+    println (s"updated result: $test")
+  }
+
+
+  def getValuesFromMap(): Unit = {
+    val test: Map[String, String] = Map("ismlp" -> "good",
+      "ismlp_2" -> "morning",
+      "ismlp_3" -> "Lucas",
+      "ismlp_4" -> "Well",
+      "ismlp_5" -> "Done")
+
+    val result: List[String] = test.values.toList
+
+    println(s"Check: map to list: $result")
+  }
+
   /*
   def convertMap() = {
     scala.collection.immutable.Map(Map.toSeq:_*)

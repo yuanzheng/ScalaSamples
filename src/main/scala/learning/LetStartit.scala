@@ -7,6 +7,9 @@ import json.JsonLearning
 import timezone.TimeZone
 import timezone.Time
 import data.utils.StringUtils
+import learning.patternmatch.PatternM
+import learning.forLoop.forLearning
+
 import org.apache.commons.lang.{StringUtils => utils}
 
 object LetStartit {
@@ -15,16 +18,48 @@ object LetStartit {
 
   def main(args: Array[String]) ={
     println("Hello world!")
+
+
+
+
+    val test = new PatternM
+    //test.patternSearch()
+    //test.patternMatch()
+    test.numberPatternMatch()
+    // List learning
     
+    //val test = new ListLearning
+    
+    /*
+    test.unionSetTwoList()
+    * 
+    */
+    /*
+		test.convertListAny()
+    test.groupList()
+    */
+
+    
+    //val test = new MapLearning
+    //test.sortMap()
+    
+    //test.mergeTwoMaps()
+    //test.updateMapValue()
+    /*
+    test.getValuesFromMap()
+    */
+    /*
     val testword: String = "Good morning, hello, world"
     if (!StringUtils.isNullOrEmptyOrWhiteSpace(testword))
     {
       val result: String = utils.replaceEach(testword, Array("mo","wo"), Array("song", "wi"))
       println(s"replaced: $result")
     }
-    
+   
     val up = new Functions
     val map: MapLearning = new MapLearning
+    * 
+    */
     //map.addNewElementToImmutableMap
     //map.convertMapValueType()
     /*
@@ -45,8 +80,8 @@ object LetStartit {
     time.jodaTimeComparision
     time.stringToJodaTime
     */
-    val day:Time = new Time
-    day.convertTimeStamp2SQLT()
+    //val day:Time = new Time
+    //day.convertTimeStamp2SQLT()
     /*
     day.splitTime()
     day.dayOfWeek
@@ -58,12 +93,13 @@ object LetStartit {
     
     val list: ListLearning = new ListLearning
     list.mapList
-    val json: JsonLearning = new JsonLearning
-    json.mapToJsong()
-    
-    json.jsonToMap()
-    * 
     */
+    //val json: JsonLearning = new JsonLearning
+    //json.listToJson()
+    //json.mapToJsong()
+    
+    //json.jsonToMap()
+    
     //println(up.Upper("Good Morning!").toString())
     
     //up.testDate()

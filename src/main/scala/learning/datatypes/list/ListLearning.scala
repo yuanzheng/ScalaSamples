@@ -6,8 +6,68 @@ import java.util.regex.Pattern
 import scala.util.matching.Regex
 import scala.collection.mutable.ListBuffer
 
+case class user(idmUserId: Int,
+                sourceId: Long,
+                idmAccountId: Int,
+                status: String)
 class ListLearning {
 
+
+  def unionSetTwoList(): Unit = {
+    val t1: List[String] = List("hello", "World", "song", "hello")
+    val t2: List[String] = List("good", "world", "song", "song")
+    val x1: Set[String] = t1.toSet
+    val x2: Set[String] = t2.toSet
+    
+    println(s"set 1:$x1")
+    println(s"set 2:$x2")
+    val result: Set[String] = x1.&(x2)
+    println(s"intersection: $result")
+  }
+  
+  def convertListAny(): Unit = {
+    val test: Map[String, Any] = Map("test" -> List("hello", 1))
+
+    println(s"Yes, $test")
+    test.get("test") match {
+      case Some(head :: tail) => 
+        println(s"$head and $tail")
+        val newList: List[String] = test.get("test").get.asInstanceOf[List[String]]//.map(_.toString)
+        println(s"new list: $newList")
+      case _ => println("Error")
+    }
+  }
+
+  def groupList(): Unit = {
+    val v = List(
+        Map("idm_user_id"-> 21929, "accId" -> 1, "name" -> "Hellow orld"),
+        Map("idm_user_id"-> 21929, "accId" -> 2, "name" -> "Hello good w orld"),
+        Map("idm_user_id"-> 21928,"accId" -> 3, "name" -> "Hellow orld"),
+        Map("idm_user_id"-> 21929, "accId" -> 1, "name" -> "Hello my world"),
+        Map( "idm_user_id"-> 21928,"accId" -> 3, "name" -> "Hello little w orld"))
+        
+    val x = v.groupBy(_.get("accId")).map(f => {
+      var assign: List[Map[String, String]] = List()
+      
+      f._2.foreach(x => {
+        assign ::= Map("name"-> x.get("name").get.toString())  
+        })
+    
+      val each: Map[String, Any] = Map(
+          "idm_user_id" -> f._2.head.get("idm_user_id").get,
+          "accId" -> f._2.head.get("accId").get,
+          "assignments" -> assign)
+      each
+    }
+    )
+ 
+    
+    
+    println(s"Test groupby: $x")
+    
+  }
+  
+  
   def listBufferLearning(): Unit = {
     val buf = new ListBuffer[Char]
     
@@ -166,9 +226,9 @@ class ListLearning {
     println(s"Check longtitude and latitude: $long, $lat")
   }
   
-  /** Append new elmenets at the end of the list
+  /** concatenate two lists, append new list at the end of the list
    * 
-   * very inefficient prossiblity is to use :::, because it takes time proportional
+   * very inefficient prossibility is to use :::, because it takes time proportional
    * to the length of its first operand. The whole operation takes time proportional to the 
    * square of the length of the list.
    * 
@@ -184,6 +244,7 @@ class ListLearning {
     println(s"See: ${result.mkString}")
   }
   
+  /** append an element to the tail of list */
   def appendList1() {
     val p1 = Map("name"->"lucas", "age"->200)
     val p2 = Map("name"->"song", "age"->2000)
@@ -194,6 +255,7 @@ class ListLearning {
     
   }
   
+  /** add new element to the head of list */
   def appendList2(): Unit= {
       println("Test breakable:")
       var tlist:List[Map[String,String]] = List[Map[String,String]]()
@@ -202,7 +264,7 @@ class ListLearning {
                                                       //> tmap1  : Map[String,String] = Map(h -> good, b -> no good)
       val tmap2:Map[String,String] = Map("h"->"morning", "b"->"very good")
                                                       //> tmap2  : Map[String,String] = Map(h -> morning, b -> very good)
-      tlist ::=tmap1
+      tlist ::=tmap1  // 加到list的head
       tlist ::=tmap2
       tlist                                           //> res4: List[Map[String,String]] = List(Map(h -> morning, b -> very good), Ma
                                                       //| p(h -> good, b -> no good))
