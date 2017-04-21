@@ -58,14 +58,25 @@ class PatternM {
   }
 
   def numberPatternMatch(): Unit = {
-    val pattern = "\\[[+-]?([0-9]*[.])?[0-9]+,[+-]?([0-9]*[.])?[0-9]+\\]".r
-    val test: String = "[12.234,-2.1]"
+    val pattern = "\\[[+-]?([0-9]*[.])?[0-9]+,[\\s]?[+-]?([0-9]*[.])?[0-9]+\\]".r
+    val test: String = "[+12.234, -12.2]"
 
     test match {
       case pattern(c) => println(s"pattern matched!")
       case _ => println(s"pattern doesn't match")
     }
 
+    if (test.matches("\\[[+-]?([0-9]*[.])?[0-9]+,[\\s]?[+-]?([0-9]*[.])?[0-9]+\\]")) {
+      val num = "[+-]?([0-9]*[.])?[0-9]+".r
+      val firstNum: String = num.findFirstIn(test).get
+      println(s"test again, pattern matched! first number: $firstNum")
+
+      val secondPart: String = test.split(",")(1)
+      val secondNum: String = num.findFirstIn(secondPart).get
+      println(s"test again, pattern matched! first number: $secondNum")
+    }
+    else
+      println(s"test again, doesn't match!")
 
   }
 

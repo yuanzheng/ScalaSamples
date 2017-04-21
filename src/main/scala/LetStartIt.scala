@@ -1,48 +1,58 @@
-package learning
+package main.scala
 
-import datatypes.map.MapLearning
-import algorithms.sort.ScalaSorting
-import datatypes.list.ListLearning
-import json.JsonLearning
-import timezone.TimeZone
-import timezone.Time
+/**
+  * Created by ysong on 4/21/17.
+  */
+import learning.datatypes.map.MapLearning
+import learning.algorithms.sort.ScalaSorting
+import learning.datatypes.list.ListLearning
+import learning.json.JsonLearning
+import learning.timezone.TimeZone
+import learning.timezone.Time
 import data.utils.StringUtils
 import learning.patternmatch.PatternM
 import learning.forLoop.forLearning
-
+import learning.streams.StreamLearning
+import learning.LazyEvaluation.LazyLearning
 import org.apache.commons.lang.{StringUtils => utils}
 
 object LetStartit {
-  
-  
+
+
 
   def main(args: Array[String]) ={
     println("Hello world!")
 
-
-
-
+    val test = new LazyLearning
+    test.test()
+    /*
+    /** Stream */
+    val test = new StreamLearning
+    test.streamRange(1, 10)
+    */
+    /*
     val test = new PatternM
+    test.numberPatternMatch()
     //test.patternSearch()
     //test.patternMatch()
-    test.numberPatternMatch()
+    */
     // List learning
-    
+
     //val test = new ListLearning
-    
+
     /*
     test.unionSetTwoList()
-    * 
+    *
     */
     /*
 		test.convertListAny()
     test.groupList()
     */
 
-    
+
     //val test = new MapLearning
     //test.sortMap()
-    
+
     //test.mergeTwoMaps()
     //test.updateMapValue()
     /*
@@ -55,10 +65,10 @@ object LetStartit {
       val result: String = utils.replaceEach(testword, Array("mo","wo"), Array("song", "wi"))
       println(s"replaced: $result")
     }
-   
+
     val up = new Functions
     val map: MapLearning = new MapLearning
-    * 
+    *
     */
     //map.addNewElementToImmutableMap
     //map.convertMapValueType()
@@ -70,38 +80,38 @@ object LetStartit {
     map.convertMapValueType()
     map.mapContain()
     map.addNewElementToMap
-    
-    
+
+
     val time: TimeZone = new TimeZone
     time.testToday()
-    
+
     time.UDate()
     time.jodaToJavaDate()
     time.jodaTimeComparision
     time.stringToJodaTime
     */
-    //val day:Time = new Time
+    val day:Time = new Time
     //day.convertTimeStamp2SQLT()
     /*
     day.splitTime()
     day.dayOfWeek
     day.timeDifference
     day.timeFormat
-    
+
     val sort: ScalaSorting = new ScalaSorting
     sort.jodaTimeSort()
-    
+
     val list: ListLearning = new ListLearning
     list.mapList
     */
-    //val json: JsonLearning = new JsonLearning
+    val json: JsonLearning = new JsonLearning
     //json.listToJson()
     //json.mapToJsong()
-    
+
     //json.jsonToMap()
-    
+
     //println(up.Upper("Good Morning!").toString())
-    
+
     //up.testDate()
     //up.convertMap()
     //up.updateMap()
@@ -123,11 +133,11 @@ object LetStartit {
     up.testJavaDate()
     //up.testDefaultDate()
     up.playList()
-    
+
     up.json()
     up.exceptionT()
     up.selfException()
-    * 
+    *
     */
     /*
     up.testGroup()
@@ -136,29 +146,29 @@ object LetStartit {
     up.useFunction()
     up.printMap()
     up.testMatch()
-    
+
     var test = up.testException()
     println(s"check exception: $test")
-    
+
     test = up.testMap()
     println(s"check Map: $test")
-    
+
     val testList = up.testInteractionList()
     if (testList.length != 0)
         println(s"check interactionList: $testList")
-    
-    
-    
+
+
+
     //val testClass: ClassLearning = new ClassLearning(1,2)
-    
+
     //println(s"check class:\n ${testClass.toString()}")
-    
-        
+
+
     up.testObject()
-    * 
+    *
     */
     //up.buildMap()
-    
+
     //up.iterateMap()
   }
 
