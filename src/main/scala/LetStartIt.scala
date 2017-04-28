@@ -23,19 +23,21 @@ object LetStartit {
   def main(args: Array[String]) ={
     println("Hello world!")
 
+/*
     val test = new LazyLearning
     test.test()
+  */
     /*
     /** Stream */
     val test = new StreamLearning
     test.streamRange(1, 10)
     */
-    /*
+
     val test = new PatternM
     test.numberPatternMatch()
     //test.patternSearch()
     //test.patternMatch()
-    */
+
     // List learning
 
     //val test = new ListLearning

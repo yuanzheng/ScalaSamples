@@ -62,7 +62,7 @@ class PatternM {
     val test: String = "[+12.234, -12.2]"
 
     test match {
-      case pattern(c) => println(s"pattern matched!")
+      case pattern(_*) => println(s"pattern matched!")
       case _ => println(s"pattern doesn't match")
     }
 
@@ -77,6 +77,17 @@ class PatternM {
     }
     else
       println(s"test again, doesn't match!")
+
+
+
+    /*
+    val inRange = "\\[[+-]?([0-9]*[.])?[0-9]+,[\\s]?[+-]?([0-9]*[.])?[0-9]+\\]".r
+
+    "[2,-3.3]" match {
+      case inRange(_*) => "good job"
+      case _ => "no way"
+    }
+     */
 
   }
 
