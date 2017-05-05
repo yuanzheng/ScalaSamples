@@ -6,7 +6,8 @@ import com.mongodb.DBObject
 /** Traits are similar to Java interfaces, except they can have non-abstract members */
 trait Human {
 
-  val humanId: String   // it is allowed because it is 'trait', it will be implemented by subclass
+  val humanId: Int   // it is allowed because it is 'trait', it will be implemented by subclass
+  val name: String
   var humanFeatures: MMap[String, Any] = MMap()
   
   def setHumanId(id: String): Boolean = {

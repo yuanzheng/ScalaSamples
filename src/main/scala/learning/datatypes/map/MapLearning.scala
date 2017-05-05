@@ -6,7 +6,16 @@ import util.control.Breaks._
 import java.util.Date
 
 class MapLearning {
-  
+
+  def zipCreateMap: Unit = {
+    val l: List[String] = List("Hello", "world")
+    val l2: List[Int] = List(1,2)
+
+    val result: Map[String, Any] = Map() ++ (l zip l2)
+
+    println(s"zip create a map: $result")
+  }
+
   def getMaxValue(): Unit = {
     val t2: Map[Long, Int] = Map("1".toLong -> 2, "99".toLong -> 1, "11".toLong -> -1)
     
@@ -186,9 +195,12 @@ class MapLearning {
     val whattype: Any = m2.get("size").getOrElse("")
     println(s"check get None ${whattype.getClass()}")
     
-    val m3: MMap[String, Any] = MMap("name"->"song", "age"->200)
-    val m4: MMap[String, Any] = MMap("company"->"insidesales.com", "size"->1000)
-    
+    val m3: MMap[String, Any] = MMap("Last"->"song", "new_age"->200)
+    val m4: MMap[String, Any] = MMap("company2"->"insidesales.com", "size2"->1000)
+
+    val secondMap: Map[String, Any] = newMap ++ Seq(("Last"->"song"), ("new_age"->200),
+                                                    ("company2"->"insidesales.com"), ("size2"->1000))
+    println(s"add new map: $secondMap")
     
     newMap
   }
