@@ -14,6 +14,7 @@ import learning.patternmatch.PatternM
 import learning.forLoop.forLearning
 import learning.streams.StreamLearning
 import learning.LazyEvaluation.LazyLearning
+import learning.functions.functionLearning
 import org.apache.commons.lang.{StringUtils => utils}
 
 object LetStartit {
@@ -27,6 +28,15 @@ object LetStartit {
     val test = new LazyLearning
     test.test()
   */
+
+    /*
+    val test = new functionLearning
+    test.sqrt(2)
+    */
+    /*
+    test.test()
+    val test = new LazyLearning
+    */
     /*
     /** Stream */
     val test = new StreamLearning

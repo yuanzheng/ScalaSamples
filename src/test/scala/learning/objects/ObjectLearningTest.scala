@@ -3,7 +3,7 @@ package learning.objects
 import org.scalatest.FlatSpec
 import org.scalatest.Matchers
 import learning.classes.Adult
-import learning.classes.traits.Human
+import learning.classes.abstractClass.Human
 
 class ObjectLearningTest extends FlatSpec with Matchers {
 

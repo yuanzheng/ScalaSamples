@@ -1,8 +1,8 @@
 package learning.domaindriven.mongodbservices
 
-import learning.classes.traits.Human
 import learning.repositories.mongodb.HumanMongoRepository
 import com.mongodb.WriteResult
+import learning.classes.abstractClass.Human
 
 class HumanMongoDataService [H <: Human, R <: HumanMongoRepository[H]] (val repository: R) extends MongoDataService(repository) {
 

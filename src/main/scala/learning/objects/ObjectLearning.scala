@@ -1,7 +1,7 @@
 package learning.objects
 
+import learning.classes.abstractClass.Human
 import learning.classes.{Adult, Teen}
-import learning.classes.traits.Human
 class ObjectLearning {
   
   
@@ -11,7 +11,7 @@ class ObjectLearning {
     //val people: Human = Class.forName("learning.classes." + job)..newInstance.asInstanceOf[Human]
     
     //people
-    new Adult("123")
+    new Adult("123", "Lucas")
   }
 
 }

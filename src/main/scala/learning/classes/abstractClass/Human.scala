@@ -1,15 +1,23 @@
-package learning.classes.traits
+package learning.classes.abstractClass
 
-import scala.collection.mutable.{Map => MMap}
 import com.mongodb.DBObject
 
-/** Traits are similar to Java interfaces, except they can have non-abstract members */
-trait Human {
+import scala.collection.mutable.{Map => MMap}
 
-  val humanId: Int   // it is allowed because it is 'trait', it will be implemented by subclass
+
+/** abstract class can contain members which are missing implementation
+  * no instances of an abstract class can be created with the operator new
+  *
+  */
+abstract class Human {
+
   val name: String
+  val humanId: String   // abstract // it is allowed because it is 'trait', it will be implemented by subclass
   var humanFeatures: MMap[String, Any] = MMap()
-  
+
+  def include(name: String): Boolean    // abstract method
+
+  // method can be overrided
   def setHumanId(id: String): Boolean = {
     if (this.humanId == id) {
       println(s"humanId equals to id $id")
@@ -30,5 +38,5 @@ trait Human {
       this
   }
   
-  override def toString() = humanFeatures.toString()
+  override def toString = humanFeatures.toString()
 }

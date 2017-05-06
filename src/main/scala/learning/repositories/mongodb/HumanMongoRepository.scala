@@ -1,11 +1,12 @@
 package learning.repositories.mongodb
 
-import learning.classes.traits.Human
 import com.mongodb.casbah.Imports._
+
 import scala.reflect.runtime._
 import scala.reflect.runtime.universe._
-import org.joda.time.{LocalDateTime, DateTime, DateTimeZone}
+import org.joda.time.{DateTime, DateTimeZone, LocalDateTime}
 import com.mongodb.casbah.commons.conversions.scala._
+import learning.classes.abstractClass.Human
 /** Add data into Mongodb, we use an object(human). After converting Object into a Map, We
  *  can insert the map into Mongodb 
  * Note: 

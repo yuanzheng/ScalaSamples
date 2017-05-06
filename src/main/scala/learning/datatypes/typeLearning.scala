@@ -1,6 +1,6 @@
 package learning.datatypes
 
-import learning.classes.traits.Human
+import learning.classes.abstractClass.Human
 
 object typeLearning {
 

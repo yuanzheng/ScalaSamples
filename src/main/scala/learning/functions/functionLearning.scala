@@ -10,8 +10,16 @@ class functionLearning {
       
       result
   }
+
+  /** or using recursion */
+  private def sum1_recursion(f: Int => Int)(a: Int, b: Int): Int = {
+    if (a > b)
+      0
+    else
+      f(a) + sum1_recursion(f)(a+1, b)
+  }
     
-  // Equal to
+  // above 2 functions equals to
   
   /** returns a function that takes two integers and returns an integer */
   private def sum2(f: Int => Int): (Int, Int) => Int = {  
@@ -32,7 +40,7 @@ class functionLearning {
   }
   
   /** Nested Functions */
-  def sumAllFromNestedF(start: Int, end: Int) = {
+  def sumAllFromNestedF(start: Int, end: Int): Unit = {
     // Nested Function:
     def wrapIt(x: Int) = "Sum from " + start + " to " + end + " is " + x.toString()
     
@@ -46,11 +54,21 @@ class functionLearning {
   }
   
   /** Annonymous Function */
-    
+  def testAnnonymousFunction(): Unit = {
+
+    val result: Int = sum1(x => x*x)(3, 5)
+    println(s"anonymous function is passed as parameter to sum1, the result should be 50 == $result")
+  }
     
     
   /** Currying */
     
-    
+  def sqrt(x: Double) = fixedPoint(y => x/y)(2)
+
+  def fixedPoint(f: Double => Double)(firstGuess: Double) = {
+    val check: Double = f(firstGuess)
+
+    println(s"function(firstGuess): $check")   //1.0
+  }
     
 }
