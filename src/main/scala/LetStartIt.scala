@@ -16,6 +16,7 @@ import learning.streams.StreamLearning
 import learning.LazyEvaluation.LazyLearning
 import learning.functions.functionLearning
 import org.apache.commons.lang.{StringUtils => utils}
+import learning.functions.ApplyFunction
 
 object LetStartit {
 
@@ -23,6 +24,8 @@ object LetStartit {
 
   def main(args: Array[String]) ={
     println("Hello world!")
+
+    ApplyFunction.testFunctionAsObject
 
 /*
     val test = new LazyLearning

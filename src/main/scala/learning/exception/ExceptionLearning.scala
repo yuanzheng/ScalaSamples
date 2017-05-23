@@ -34,4 +34,13 @@ class ExceptionLearning {
     val t: Option[List[String]] = catching(classOf[ClassCastException]) opt tmp.asInstanceOf[List[String]]
     println(s"What is map: ${t.toString()}")
   }
+
+  def catchSelfDefinedException(): Unit = {
+    try {
+      safeStringToLong("test")
+    } catch {
+      // case e @ (_:ConnectionTimeoutException | _:WebServiceException | _:ParseException | _:DomainException) => throw e
+      case e: Exception => println("Exception has been caught.")
+    }
+  }
 }

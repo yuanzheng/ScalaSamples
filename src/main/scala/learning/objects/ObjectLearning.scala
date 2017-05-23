@@ -12,6 +12,7 @@ class ObjectLearning {
     
     //people
     new Adult("123", "Lucas")
+
   }
 
 }

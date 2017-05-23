@@ -57,6 +57,7 @@ class Adult2(_id: Int, _name: String) extends Human {
 
     true
   }
+
 }
 
 
