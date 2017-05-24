@@ -46,14 +46,17 @@ object LetStartit {
     test.streamRange(1, 10)
     */
 
+    /*
     val test = new PatternM
     test.numberPatternMatch()
+    */
     //test.patternSearch()
     //test.patternMatch()
 
     // List learning
 
-    //val test = new ListLearning
+    val test = new ListLearning
+    test.reductionList
 
     /*
     test.unionSetTwoList()

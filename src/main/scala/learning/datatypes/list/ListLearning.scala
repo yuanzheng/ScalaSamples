@@ -12,6 +12,28 @@ case class user(idmUserId: Int,
                 status: String)
 class ListLearning {
 
+  def reductionList(): Unit = {
+    val l1: List[Int] = List(1,2,3,4,5,6,7,8,9)
+
+    // reduceLeft
+    println(s"sum of list, reduceLeft: ${l1 reduceLeft((x,y) => x + y)}")
+
+    // equals to _ + _
+    println(s"sum of list, reduceLeft again: ${l1 reduceLeft(_ + _)}")
+
+    // foldLeft
+    println(s"sum of list, foldLeft: ${(l1 foldLeft 10)(_ + _)}")
+
+    // foldRight
+    println(s"sum of list, foldRight: ${(l1 foldRight 10)(_ + _)}")
+
+    val l2: List[Int] = List(10, 11, 12)
+
+    // concat two lists
+    println(s"concat two list: ${(l1 foldRight l2)(_ :: _)}")
+
+
+  }
 
   def unionSetTwoList(): Unit = {
     val t1: List[String] = List("hello", "World", "song", "hello")
