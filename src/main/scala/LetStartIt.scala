@@ -17,6 +17,7 @@ import learning.LazyEvaluation.LazyLearning
 import learning.functions.functionLearning
 import org.apache.commons.lang.{StringUtils => utils}
 import learning.functions.ApplyFunction
+import learning.classes.traits.Man
 
 object LetStartit {
 
@@ -26,6 +27,7 @@ object LetStartit {
     println("Hello world!")
 
     ApplyFunction.testFunctionAsObject
+
 
 /*
     val test = new LazyLearning
@@ -56,6 +58,7 @@ object LetStartit {
     // List learning
 
     val test = new ListLearning
+    test.basicUsages()
     test.reductionList
 
     /*

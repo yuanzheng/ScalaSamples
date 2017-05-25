@@ -12,6 +12,97 @@ case class user(idmUserId: Int,
                 status: String)
 class ListLearning {
 
+
+  def basicUsages(): Unit = {
+
+    val sampleList: List[Int] = List(1,2,3,4,5,6,7,8,9)
+    // init, consist of all elements, except the last one
+    println(s"init: ${sampleList.init}")
+
+    // take, first n elements
+    println(s"take: ${sampleList take 3}")
+
+    // drop, the rest of collection after taking n elements
+    println(s"drop: ${sampleList drop 3}")
+
+    // index
+    println(s"index: ${sampleList(3)}")
+
+
+    /** create a new list */
+
+    val secondList: List[Int] = List(10, 11, 12)
+
+    // create a new list consisting of all elements of 'sampleList',
+    // followd by all elements of 'secondList'
+    println(s"++ two lists: ${sampleList ++ secondList}")
+
+    // add an element in front of List (prepend前置）
+    println(s"::, ${101 :: sampleList}")
+
+    // prepend a list to sampleList
+    println(s":::, ${secondList ::: sampleList}")
+
+    // in reversed order
+    println(s"reverse: ${sampleList.reverse}")
+
+    // update the element at index n
+    println(s"update index: ${sampleList updated (5, 0)}")
+
+
+    /** find an element */
+
+    // indexOf, return the position of the requested element
+    println(s"indexOf: ${sampleList indexOf 9}")
+
+    // contains
+    println(s"contains: ${sampleList contains 7}")
+
+    // split At
+    println(s"split at: ${sampleList splitAt 4}")
+
+    // merge two lists
+    println(s"merge two List: ${merge(secondList, sampleList)}")
+
+    // square a list
+    println(s"square a list: ${squareList(sampleList)}")
+
+    // span
+    println(s"span a list: ${sampleList span (y => y == 1)}")
+
+  }
+
+  private def merge(xs: List[Int], ys: List[Int]): List[Int] = {
+
+    /*
+    xs match {
+      case Nil => ys
+      case x :: xsl => {
+        ys match {
+          case Nil => xs
+          case y :: ysl => {
+            if (x < y)
+              x :: merge(xsl, ys)
+            else
+              y :: merge(xs, ysl)
+          }
+        }
+      }
+    }
+    */
+
+    // 用 pair 做
+    (xs, ys) match {
+      case (Nil, ys) => ys
+      case (xs, Nil) => xs
+      case (x :: xsl, y :: ysl) => {
+        if (x < y) x :: merge(xsl, ys)
+        else
+          y :: merge(xs, ysl)
+      }
+    }
+  }
+
   def reductionList(): Unit = {
     val l1: List[Int] = List(1,2,3,4,5,6,7,8,9)
 
@@ -35,6 +126,13 @@ class ListLearning {
 
   }
 
+  private def squareList(xs: List[Int]): List[Int] = xs map(f => f * f)
+  /*
+    xs match {
+      case Nil => Nil
+      case y :: ys => y * y :: squareList(ys)
+    }
+  */
   def unionSetTwoList(): Unit = {
     val t1: List[String] = List("hello", "World", "song", "hello")
     val t2: List[String] = List("good", "world", "song", "song")
