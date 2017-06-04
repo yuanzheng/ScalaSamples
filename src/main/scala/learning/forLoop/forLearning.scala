@@ -6,6 +6,17 @@ class forLearning {
 
   val requestedSymbols = List("MSFT", "IXIC")
   val theSet = List("DJIA", "GSPC", "IXIC", "XAX")
+
+  def forFor(): Unit = {
+
+    val result = for {
+      each <- List(100,101,102,103)
+      col <- 0 to 5
+    } yield col :: List(each)
+
+    println(s"forFor: $result")
+  }
+
   
   def forCount() = {
     

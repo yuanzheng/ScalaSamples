@@ -34,7 +34,7 @@ class ListLearning {
     val secondList: List[Int] = List(10, 11, 12)
 
     // create a new list consisting of all elements of 'sampleList',
-    // followd by all elements of 'secondList'
+    // followed by all elements of 'secondList'
     println(s"++ two lists: ${sampleList ++ secondList}")
 
     // add an element in front of List (prepend前置）
@@ -125,6 +125,45 @@ class ListLearning {
 
 
   }
+
+  def sequenceOperation(): Unit = {
+    val l1 = Array(1,2,3,4,5,6)
+
+    // map
+    println(s"map array: ${l1 map (x => x*2) toString}")
+
+    val l2: String = "Hello world"
+
+    // filter
+    println(s"filter a String upper case chars: ${l2 filter(x => x.isUpper)}")
+
+    // exists
+    println(s"Exists upper case chars: ${l2 exists (x => x.isUpper)}")
+
+    // foralls
+    println(s"foralls chars are upper case: ${l2 forall(x => x.isUpper)}")
+
+    // zip
+    println(s"zip two lists: ${l1.toList zip l2}")
+
+    // flatmap
+    println(s"flatmap a String: ${l2 flatMap(x => List('.', x))}")
+  }
+
+  /** Vector */
+  def vectorOperation(): Unit = {
+    val v1: Vector[Int] = Vector(1,2,3)
+    val v2: Vector[Int] = Vector(4,5,6)
+
+    val sum: Int = (v1 zip v2).map {
+      case (x, y) => x * y
+    }.sum
+
+    println(s"sum two vectors: $sum")
+
+
+  }
+
 
   private def squareList(xs: List[Int]): List[Int] = xs map(f => f * f)
   /*

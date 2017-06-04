@@ -29,6 +29,8 @@ object LetStartit {
     ApplyFunction.testFunctionAsObject
 
 
+    //val test= new forLearning
+    //test.forFor()
 /*
     val test = new LazyLearning
     test.test()
@@ -56,11 +58,11 @@ object LetStartit {
     //test.patternMatch()
 
     // List learning
-    /*
-    val test = new ListLearning
-    test.basicUsages()
-    test.reductionList
-    */
+    //val test = new ListLearning
+    //test.basicUsages()
+    //test.reductionList
+    //test.sequenceOperation
+    //test.vectorOperation
 
     /*
     test.unionSetTwoList()
