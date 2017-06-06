@@ -56,10 +56,11 @@ object LetStartit {
     //test.patternMatch()
 
     // List learning
-
+    /*
     val test = new ListLearning
     test.basicUsages()
     test.reductionList
+    */
 
     /*
     test.unionSetTwoList()
@@ -71,8 +72,9 @@ object LetStartit {
     */
 
 
-    //val test = new MapLearning
+    val test = new MapLearning
     //test.sortMap()
+    test.addNewElementInMapList()
 
     //test.mergeTwoMaps()
     //test.updateMapValue()

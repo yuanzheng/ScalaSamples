@@ -4,7 +4,24 @@ import java.text.SimpleDateFormat
 import util.control.Breaks._
 
 object Hello {
-  println("Welcome to the Scala worksheet")       //> Welcome to the Scala worksheet
+  println("Welcome to the Scala worksheet") //> Welcome to the Scala worksheet
+
+
+  class Poly(val terms: Map[Int, Double]) {
+
+
+    def +(other: Poly) = newp Poly(terms ++ other.terms)
+
+    override def toString = (for ((exp, coeff) <- terms.toList.sorted.reverse) yield coeff + "x^" + exp) mkString
+
+  }
+
+  val p1 = new Poly(Map(1 -> 2.0, 3 -> 4.0, 5 -> 6.2))
+  val p2 = new Poly(Map(0 -> 3.0, 3 -> 7.0))
+
+  p1 + p2
+
+
   
   var x = 1                                       //> x  : Int = 1
   def increase(i: Int) = i+1                      //> increase: (i: Int)Int

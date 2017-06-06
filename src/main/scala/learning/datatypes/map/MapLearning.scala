@@ -7,6 +7,31 @@ import java.util.Date
 
 class MapLearning {
 
+
+  def addNewElementInMapList(): Unit = {
+    val rules: List[Map[String, String]] = List(Map(
+      "stage_gate" -> "close won"
+    ), Map(
+      "stage_gate" -> "closed",
+      "comparison_operator" -> "greater than"
+    ))
+
+    val oldMap: Map[String, Any] = Map("linear_process" -> "NeuralView Contact",
+    "mapping_rules" -> rules)
+
+    val newRule: List[Map[String, String]] = rules map (m => if (m.get("comparison_operator") == None) m ++ Map("comparison_operator" -> "Equals")
+    else m)
+
+    println(s"new rules: $newRule")
+
+    println(s"old map: $oldMap")
+
+    val newMap: Map[String, Any] = oldMap ++ Map("mapping_rules" -> newRule)
+
+    println(s"new Map: $newMap")
+  }
+
+
   def zipCreateMap: Unit = {
     val l: List[String] = List("Hello", "world")
     val l2: List[Int] = List(1,2)
@@ -106,6 +131,26 @@ class MapLearning {
     println(s"See: $result")
   }
   
+  def concatenateTwoMaps(): Map[String, Any] = {
+    val m1: Map[String, Any] = Map("name"->"song", "age"->200)
+    val m2: Map[String, Any] = Map("company"->"insidesales.com", "size"->1000)
+
+    val newMap: Map[String, Any] = m1++m2
+    println(s"new Map: $newMap")
+
+
+    val whattype: Any = m2.get("size").getOrElse("")
+    println(s"check get None ${whattype.getClass()}")
+
+    val m3: MMap[String, Any] = MMap("Last"->"song", "new_age"->200)
+    val m4: MMap[String, Any] = MMap("company2"->"insidesales.com", "size2"->1000)
+
+    val secondMap: Map[String, Any] = newMap ++ Seq(("Last"->"song"), ("new_age"->200),
+                                                    ("company2"->"insidesales.com"), ("size2"->1000))
+    println(s"add new map: $secondMap")
+
+    newMap
+  }
   
   def mapContain() {
     var prospectId: Long = 0
@@ -113,24 +158,24 @@ class MapLearning {
     m2.get("location") match {
       case Some(x: Long) => prospectId = x
       case None | _=> println(s"It doesn't contain Long: ${m2.get("location")}")
-      
+
     }
-    
+
     println(s"It contains: $prospectId")
     println(s"It Casts to long: ${m2.get("size").get.toString.toLong}")
-    
+
   }
-  
+
   def addNewElementToImmutableMap() {
      var m2: Map[String, Any] = Map("company"->"insidesales.com", "size:12"->1000)
      m2 += ("name"->"")//("People" -> people)
-     
+
      val people: Map[String, Any] = Map("name"->"Lucas Song")
      val tmp: Map[String, Any] = m2++people
-     
-     
+
+
      println(s"Add an Element: $m2")
-     
+
      m2.foreach(f=> {
        f._2 match {
          case string: String => {
@@ -142,26 +187,26 @@ class MapLearning {
          }
        }
      })
-    
+
   }
+  
   def removeFromMap() {
     var m2: Map[String, Any] = Map("company"->"insidesales.com", "size:12"->1000)
     val key = "size" + ":" + "12"
     m2 = Map() ++ m2-key
-    
+
     println(s"remove element from a map: $m2")
   }
   
-  
   def newBuilder() {
     val result = Map.newBuilder[String, Any]
-    
+
     result.+=("name"->"Hello world")
     println(s"new Builder 1: ${result.result()}")
-    
+
     result.+=("age"->123345)
     println(s"new Builder 2: ${result.result()}")
-    
+
     val tmpMap: Map[String, Any] = Map()
     result.+=("year" -> tmpMap.get("year").getOrElse(""))
     val check: Map[String, Any] = result.result()
@@ -171,38 +216,16 @@ class MapLearning {
         println(s" --- ${f._1} is ${f._2}")
       }
     }
-    
+
   }
-  
   
   def addNewElementToMap() {
     var m2: Map[String, Any] = Map("company"->"insidesales.com", "size"->1000.toLong)
-    
+
     m2 += "Age"->2000
-    
+
     println(s"With new element: $m2")
 
-  }
-  
-  def concatenateTwoMaps(): Map[String, Any] = {
-    val m1: Map[String, Any] = Map("name"->"song", "age"->200)
-    val m2: Map[String, Any] = Map("company"->"insidesales.com", "size"->1000)
-    
-    val newMap: Map[String, Any] = m1++m2
-    println(s"new Map: $newMap")
-    
-    
-    val whattype: Any = m2.get("size").getOrElse("")
-    println(s"check get None ${whattype.getClass()}")
-    
-    val m3: MMap[String, Any] = MMap("Last"->"song", "new_age"->200)
-    val m4: MMap[String, Any] = MMap("company2"->"insidesales.com", "size2"->1000)
-
-    val secondMap: Map[String, Any] = newMap ++ Seq(("Last"->"song"), ("new_age"->200),
-                                                    ("company2"->"insidesales.com"), ("size2"->1000))
-    println(s"add new map: $secondMap")
-    
-    newMap
   }
   
   def convertMapValueType() {
