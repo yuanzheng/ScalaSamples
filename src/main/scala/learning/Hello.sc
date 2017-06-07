@@ -6,6 +6,7 @@ object Hello {
   println("Welcome to the Scala worksheet") //> Welcome to the Scala worksheet
 
 
+
   class Poly(val terms: Map[Int, Double]) {
 
 
