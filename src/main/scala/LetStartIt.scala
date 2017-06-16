@@ -29,8 +29,9 @@ object LetStartit {
     ApplyFunction.testFunctionAsObject
 
 
-    //val test= new forLearning
+    val test= new forLearning
     //test.forFor()
+    test.updateCaseClassObject()
 /*
     val test = new LazyLearning
     test.test()
@@ -74,9 +75,9 @@ object LetStartit {
     */
 
 
-    val test = new MapLearning
+    //val test = new MapLearning
     //test.sortMap()
-    test.addNewElementInMapList()
+    //test.addNewElementInMapList()
 
     //test.mergeTwoMaps()
     //test.updateMapValue()

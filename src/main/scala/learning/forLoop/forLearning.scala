@@ -1,11 +1,35 @@
 package learning.forLoop
 
 import scala.collection.mutable.{Map=>MMap}
+import learning.classes.caseclass.GlobalPersonSellableTermLevel
 
 class forLearning {
 
   val requestedSymbols = List("MSFT", "IXIC")
   val theSet = List("DJIA", "GSPC", "IXIC", "XAX")
+
+  def updateCaseClassObject(): Unit = {
+
+    val t1= new GlobalPersonSellableTermLevel(
+      Option(1.toLong),
+      Option(22.toLong),
+      Option(33),
+      Option(44),
+      Option("datacreated"),
+      Option("datamodified")
+    )
+    val t2 = new GlobalPersonSellableTermLevel(
+      Option(1.toLong),
+      None,
+      Option(333),
+      Option(444),
+      None,
+      Option("datamodified")
+    )
+
+    val r = t1.map(x => for(a <- x) yield a)
+    println(s"Global Case Class: $r")
+  }
 
   def forFor(): Unit = {
 
