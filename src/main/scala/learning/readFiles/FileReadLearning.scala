@@ -1,5 +1,7 @@
 package learning.readFiles
 
+import scala.collection.mutable
+import scala.collection.mutable.ListBuffer
 import scala.io.Source
 //import org.apache.commons.csv.{ CSVFormat, CSVParser, CSVRecord }
 import java.io.FileReader
@@ -20,6 +22,72 @@ import scala.util.control.Exception.catching
  */
 class FileReadLearning {
 
+  def readAccountClose(): Unit = {
+    val fileName = "/Users/ysong/projects/workspace/ScalaLearning/training_set_311.csv"
+    var counter: Int = 0
+    val allIndex: ListBuffer[Int] = new ListBuffer[Int]
+
+    val pattern = "\",\"".r
+    for (line <- Source.fromFile(fileName).getLines if (counter < 4)) {
+
+      if (counter == 0) {
+        var index: Int = 0
+        val tmp: List[String] = line.split(",").toList
+        //println(s"first Line: $tmp")
+        println(s"columns: ${tmp.length}")
+
+        val columns: mutable.StringBuilder = mutable.StringBuilder.newBuilder
+        for (each <- tmp) {
+          //println(s"line: $each")
+          if (each == "\"opportunity.ext_account_id\"") {
+            println(s"$index opportunity.ext_account_id")
+
+            allIndex += index
+            columns.append(each)
+          } else if (each == "\"opportunity.source_creation_date\"") {
+            println(s"$index opportunity.source_creation_date")
+
+            allIndex += index
+            columns.append(each)
+          } else if (each == "\"opportunity.qbdialer_dials\"") {
+            println(s"$index opportunity.qbdialer_dials")
+
+            allIndex += index
+            columns.append(each)
+          } else if (each == "\"success\"") {
+            println(s"$index success")
+
+            allIndex += index
+            columns.append(each)
+          } else if (each == "\"opportunity.qbdialer_close_score\"") {
+            println(s"$index opportunity.qbdialer_close_score")
+            allIndex += index
+            columns.append(each)
+          }
+
+          index = index + 1
+        }
+
+        println(s"seq: ${allIndex.toList}")
+        println(s"all Columns: ${columns.result.stripPrefix(",")}")
+      }
+      else {
+        var tmp: Vector[String] = pattern.split(line).toVector
+        //println(s"first row: ${tmp.toList}")
+        tmp = tmp.updated(0, tmp(0).split("\"")(1))
+        tmp = tmp.updated(tmp.length -1, tmp(tmp.length -1).split("\"")(0))
+        //println(s"values: ${tmp.length}, ${tmp(0)} and ${tmp(tmp.length -1)}")
+        //println(s"all: $tmp")
+        val r: List[String] = for (each <- allIndex.toList) yield("\""+ tmp(each) + "\"")
+
+        println(s"first row: $r")
+      }
+
+      counter = counter + 1
+    }
+
+
+  }
   /** onger approach that properly closes the file */
   def readAndClose(): Unit = {
     val fileName: String = ""

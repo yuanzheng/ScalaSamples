@@ -18,6 +18,7 @@ import learning.functions.functionLearning
 import org.apache.commons.lang.{StringUtils => utils}
 import learning.functions.ApplyFunction
 import learning.classes.traits.Man
+import learning.readFiles.FileReadLearning
 
 object LetStartit {
 
@@ -26,12 +27,17 @@ object LetStartit {
   def main(args: Array[String]) ={
     println("Hello world!")
 
+    val test = new FileReadLearning
+    test.readAccountClose()
+
+/*
     ApplyFunction.testFunctionAsObject
 
 
     val test= new forLearning
     //test.forFor()
     test.updateCaseClassObject()
+*/
 /*
     val test = new LazyLearning
     test.test()

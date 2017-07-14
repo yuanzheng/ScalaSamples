@@ -27,8 +27,8 @@ class forLearning {
       Option("datamodified")
     )
 
-    val r = t1.map(x => for(a <- x) yield a)
-    println(s"Global Case Class: $r")
+    //val r = t1.map(x => for(a <- x) yield a)
+    //println(s"Global Case Class: $r")
   }
 
   def forFor(): Unit = {
